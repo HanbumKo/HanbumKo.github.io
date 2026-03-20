@@ -364,11 +364,11 @@
                 <a href="tel:010-0000-0000" class="call-btn">📞 전화</a>
             </div>
             <div class="contact-block">
-                <p class="contact-role">신랑 어머니</p><p class="contact-name">박승옥</p>
+                <p class="contact-role">신부 아버지</p><p class="contact-name">윤춘호</p>
                 <a href="tel:010-0000-0000" class="call-btn">📞 전화</a>
             </div>
             <div class="contact-block">
-                <p class="contact-role">신부 아버지</p><p class="contact-name">윤춘호</p>
+                <p class="contact-role">신랑 어머니</p><p class="contact-name">박승옥</p>
                 <a href="tel:010-0000-0000" class="call-btn">📞 전화</a>
             </div>
             <div class="contact-block">
@@ -377,6 +377,43 @@
             </div>
         </div>
     </section>
+
+    <!-- ====== 방명록 ====== -->
+    <section class="section guestbook-section reveal">
+        <h2 class="section-heading">방 명 록</h2>
+        <p class="guestbook-desc">축하 메시지를 남겨주세요 ♥</p>
+        <form class="gb-form" onsubmit="submitGuestbook(event)">
+            <input class="gb-input" type="text" id="gb-name" placeholder="이름" maxlength="20" required>
+            <textarea class="gb-textarea" id="gb-msg" placeholder="축하 메시지를 입력하세요" maxlength="200" rows="3" required></textarea>
+            <input class="gb-input" type="password" id="gb-pw" placeholder="간단 비밀번호 (수정·삭제용)" maxlength="20" required>
+            <button class="gb-submit" type="submit">메시지 남기기</button>
+        </form>
+        <div class="gb-list" id="gb-list"></div>
+    </section>
+
+    <!-- ====== 방명록 비밀번호 모달 ====== -->
+    <div class="gb-modal" id="gb-modal">
+        <div class="gb-modal-box">
+            <p class="gb-modal-title" id="gb-modal-title">비밀번호 확인</p>
+            <input class="gb-input" type="password" id="gb-modal-pw" placeholder="비밀번호 입력" maxlength="20">
+            <div class="gb-modal-btns">
+                <button class="gb-modal-cancel" onclick="closeGbModal()">취소</button>
+                <button class="gb-modal-confirm" id="gb-modal-confirm" onclick="confirmGbModal()">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== 방명록 수정 모달 ====== -->
+    <div class="gb-modal" id="gb-edit-modal">
+        <div class="gb-modal-box">
+            <p class="gb-modal-title">메시지 수정</p>
+            <textarea class="gb-textarea" id="gb-edit-msg" rows="4" maxlength="200"></textarea>
+            <div class="gb-modal-btns">
+                <button class="gb-modal-cancel" onclick="closeEditModal()">취소</button>
+                <button class="gb-modal-confirm" onclick="confirmEdit()">저장</button>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <p class="footer-names">고한범 ♥ 윤수희</p>

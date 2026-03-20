@@ -809,6 +809,179 @@ button {
     opacity: 0.8;
 }
 
+/* ====== GUESTBOOK ====== */
+.guestbook-section {
+    background: var(--bg-alt);
+}
+.guestbook-desc {
+    font-size: 0.88rem;
+    color: var(--brown-mid);
+    margin-bottom: 24px;
+}
+.gb-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+.gb-input,
+.gb-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.88rem;
+    color: var(--brown);
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s;
+}
+.gb-input:focus,
+.gb-textarea:focus {
+    border-color: var(--gold);
+}
+.gb-input::placeholder,
+.gb-textarea::placeholder {
+    color: var(--brown-light);
+}
+.gb-submit {
+    align-self: flex-end;
+    padding: 10px 28px;
+    background: var(--brown);
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: opacity 0.2s;
+}
+.gb-submit:active {
+    opacity: 0.8;
+}
+.gb-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.gb-item {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    box-shadow: 0 1px 6px var(--shadow);
+    text-align: left;
+    animation: fadeIn 0.3s ease;
+}
+.gb-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.gb-item-name {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--brown);
+}
+.gb-item-date {
+    font-size: 0.72rem;
+    color: var(--brown-light);
+}
+.gb-item-msg {
+    font-size: 0.88rem;
+    color: var(--brown-mid);
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.gb-empty {
+    font-size: 0.85rem;
+    color: var(--brown-light);
+    padding: 24px 0;
+}
+.gb-item-actions {
+    display: flex;
+    gap: 6px;
+}
+.gb-action-btn {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    color: var(--brown-light);
+    background: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: all 0.2s;
+}
+.gb-action-btn:active {
+    background: var(--bg-alt);
+}
+.gb-action-btn.del {
+    border-color: #e8b4b6;
+    color: var(--rose);
+}
+/* ====== 방명록 모달 ====== */
+.gb-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 9998;
+    align-items: center;
+    justify-content: center;
+}
+.gb-modal.open {
+    display: flex;
+}
+.gb-modal-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 24px 20px;
+    width: calc(100% - 48px);
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+}
+.gb-modal-title {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brown);
+    text-align: center;
+}
+.gb-modal-btns {
+    display: flex;
+    gap: 8px;
+}
+.gb-modal-cancel,
+.gb-modal-confirm {
+    flex: 1;
+    padding: 11px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+.gb-modal-cancel {
+    background: var(--bg-alt);
+    color: var(--brown-mid);
+    border: 1px solid var(--border);
+}
+.gb-modal-confirm {
+    background: var(--brown);
+    color: var(--white);
+    border: none;
+}
+.gb-modal-confirm:active,
+.gb-modal-cancel:active {
+    opacity: 0.75;
+}
+
 /* ====== FOOTER ====== */
 .footer {
     padding: 48px 28px;
