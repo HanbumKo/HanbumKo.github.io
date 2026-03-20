@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  color: #333;
+  background: #fffaf8;
+  line-height: 1.7;
+}
+
+.hero {
+  min-height: 100vh;
+  background: url("images/main.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.overlay {
+  background: rgba(255, 255, 255, 0.78);
+  padding: 32px 24px;
+  border-radius: 20px;
+  max-width: 520px;
+  width: 100%;
+}
+
+.small {
+  letter-spacing: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #8a6d6d;
+}
+
+h1 {
+  margin: 12px 0;
+  font-size: 36px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.section {
+  padding: 56px 20px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.grid img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #d8a7a7;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.info p,
+.card p {
+  margin: 12px 0;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .section {
+    padding: 40px 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}
