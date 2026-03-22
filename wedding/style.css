@@ -188,7 +188,7 @@ button {
     display: block;
 }
 .invite-poem {
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Gowun Dodum', sans-serif;
     font-size: 1rem;
     line-height: 2;
     color: var(--brown-mid);
@@ -365,7 +365,7 @@ button {
 }
 .tl-label {
     display: inline-block;
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Gowun Dodum', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
     color: var(--gold);
@@ -857,7 +857,7 @@ button {
     text-align: left;
 }
 .charter-info h4 {
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Gowun Dodum', sans-serif;
     font-size: 1rem;
     font-weight: 700;
     margin-bottom: 16px;
@@ -1035,7 +1035,7 @@ button {
     color: var(--brown-light);
 }
 .contact-name {
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Gowun Dodum', sans-serif;
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--brown);
@@ -1150,7 +1150,7 @@ button {
     margin-bottom: 8px;
 }
 .gb-item-name {
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Gowun Dodum', sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
     color: var(--brown);
@@ -1217,7 +1217,7 @@ button {
     box-shadow: 0 8px 32px rgba(0,0,0,0.22);
 }
 .gb-modal-title {
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Gowun Dodum', sans-serif;
     font-size: 1rem;
     font-weight: 700;
     color: var(--brown);
