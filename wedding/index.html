@@ -74,14 +74,15 @@
     <!-- ====== 가족 소개 ====== -->
     <section class="section family-section reveal">
         <div class="family-block">
-            <div class="family-col">
+            <div class="family-row">
                 <span class="parent-label">고윤열 · 박승옥의 아들</span>
-                <span class="person-name">한 범</span>
+                <span class="person-name">한범</span>
+                <a href="tel:010-6556-8849" class="family-call-btn">📞</a>
             </div>
-            <div class="heart-mid">♥</div>
-            <div class="family-col">
+            <div class="family-row">
                 <span class="parent-label">윤춘호 · 박계숙의 딸</span>
-                <span class="person-name">수 희</span>
+                <span class="person-name">수희</span>
+                <a href="tel:010-5005-2338" class="family-call-btn">📞</a>
             </div>
         </div>
 
@@ -102,12 +103,12 @@
             <div class="contact-row">
                 <span class="contact-row-role">신부 아버지</span>
                 <span class="contact-row-name">윤춘호</span>
-                <a href="tel:010-0000-0000" class="contact-call-btn">📞</a>
+                <a href="tel:010-3887-5095" class="contact-call-btn">📞</a>
             </div>
             <div class="contact-row">
                 <span class="contact-row-role">신부 어머니</span>
                 <span class="contact-row-name">박계숙</span>
-                <a href="tel:010-0000-0000" class="contact-call-btn">📞</a>
+                <a href="tel:010-9216-2338" class="contact-call-btn">📞</a>
             </div>
         </div>
     </section>
@@ -196,9 +197,7 @@
     <section class="section gallery-section reveal">
         <h2 class="section-heading">갤 러 리</h2>
         <div class="gallery-grid" id="gallery-grid"></div>
-        <button class="gallery-more-btn" id="gallery-more-btn" onclick="expandGallery()">
-            사진 더보기 <span id="gallery-more-count"></span>
-        </button>
+        <button class="gallery-more-btn" id="gallery-more-btn" onclick="toggleGallery()">사진 더보기</button>
     </section>
 
     <!-- ====== 라이트박스 ====== -->
@@ -213,114 +212,116 @@
         </div>
     </div>
 
-    <!-- ====== 예식장 ====== -->
+    <!-- ====== 오시는길 ====== -->
     <section class="section venue-section reveal">
-        <h2 class="section-heading">장 소</h2>
+        <h2 class="section-heading">오 시 는 길</h2>
         <p class="venue-name-big">소노펠리체 컨벤션</p>
-        <p class="venue-addr" id="venue-addr">서울 강남구 테헤란로87길 22 공항터미널 3층</p>
-        <p class="venue-hall">○○홀</p>
-        <button class="copy-addr-btn" onclick="copyAddress()">📋 주소 복사</button>
-
-        <div class="map-embed-wrap">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.929076900872!2d127.05669351148788!3d37.509590871936794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca46ad1b46e91%3A0x2fec9838184f5c8c!2sSono%20Felice%20Convention!5e0!3m2!1sen!2skr!4v1774024695306!5m2!1sen!2skr"
-                width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade" title="예식장 위치">
-            </iframe>
+        <div class="venue-addr-row">
+            <p class="venue-addr" id="venue-addr">서울 강남구 테헤란로87길 22 공항터미널 3층 단독홀</p>
+            <button class="copy-addr-btn" onclick="copyAddress()">복사</button>
         </div>
 
+        <div class="map-embed-wrap">
+            <img src="images/map.svg" alt="소노펠리체 컨벤션 약도" style="width:100%;height:auto;display:block;">
+        </div>
+
+        <!--
         <div class="map-app-buttons">
             <button onclick="openKakao()" class="map-btn">
                 <span class="map-btn-icon">
-                    <!-- 카카오맵 아이콘 -->
-                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="48" height="48" rx="10" fill="#FEE500"/>
-                        <ellipse cx="24" cy="22" rx="12" ry="9" fill="#3C1E1E"/>
-                        <path d="M20.5 31 L22 26" stroke="#FEE500" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                        <circle cx="20" cy="22" r="1.8" fill="#FEE500"/>
-                        <circle cx="24" cy="22" r="1.8" fill="#FEE500"/>
-                        <circle cx="28" cy="22" r="1.8" fill="#FEE500"/>
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="#FEE500"/>
+                        <ellipse cx="16" cy="15" rx="8" ry="6" fill="#3C1E1E"/>
+                        <path d="M13.5 21 L14.5 17.5" stroke="#FEE500" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                        <circle cx="13" cy="15" r="1.2" fill="#FEE500"/>
+                        <circle cx="16" cy="15" r="1.2" fill="#FEE500"/>
+                        <circle cx="19" cy="15" r="1.2" fill="#FEE500"/>
                     </svg>
                 </span>
                 <span class="map-btn-label">카카오맵</span>
             </button>
             <button onclick="openNaver()" class="map-btn">
                 <span class="map-btn-icon">
-                    <!-- 네이버지도 아이콘 -->
-                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="48" height="48" rx="10" fill="#03C75A"/>
-                        <path d="M13 13h5.8l8.4 11.5V13H33v22h-5.8L18.8 23.5V35H13z" fill="white"/>
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="#03C75A"/>
+                        <path d="M8 8h3.9l5.6 7.7V8H22v16h-3.9l-5.6-7.7V24H8z" fill="white"/>
                     </svg>
                 </span>
                 <span class="map-btn-label">네이버지도</span>
             </button>
             <button onclick="openGoogle()" class="map-btn">
                 <span class="map-btn-icon">
-                    <!-- 구글지도 아이콘 -->
-                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="48" height="48" rx="10" fill="#fff" stroke="#e0e0e0"/>
-                        <path d="M24 7c-5.52 0-10 4.48-10 10 0 7.75 10 24 10 24s10-16.25 10-24c0-5.52-4.48-10-10-10z" fill="#EA4335"/>
-                        <circle cx="24" cy="17" r="4.5" fill="white"/>
-                        <circle cx="24" cy="17" r="2" fill="#EA4335"/>
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="#f8f8f8" stroke="#e0dde8" stroke-width="1"/>
+                        <path d="M16 4c-4.42 0-8 3.58-8 8 0 6 8 16 8 16s8-10 8-16c0-4.42-3.58-8-8-8z" fill="#EA4335"/>
+                        <circle cx="16" cy="12" r="3" fill="white"/>
                     </svg>
                 </span>
                 <span class="map-btn-label">구글지도</span>
             </button>
             <button onclick="openTmap()" class="map-btn">
                 <span class="map-btn-icon">
-                    <!-- 티맵 아이콘 -->
-                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="48" height="48" rx="10" fill="#E8343A"/>
-                        <text x="24" y="35" font-family="Arial Black,Arial" font-size="26" font-weight="900" fill="white" text-anchor="middle">T</text>
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="#E8343A"/>
+                        <text x="16" y="23" font-family="Arial Black,Arial" font-size="17" font-weight="900" fill="white" text-anchor="middle">T</text>
                     </svg>
                 </span>
                 <span class="map-btn-label">티맵</span>
             </button>
         </div>
-    </section>
+        -->
 
-    <!-- ====== 오시는길 ====== -->
-    <section class="section direction-section reveal">
-        <h2 class="section-heading">오 시 는 길</h2>
-        <div class="dir-tabs">
-            <button class="dir-tab active" onclick="switchTab(this, 'car')">🚗 자가용</button>
-            <button class="dir-tab" onclick="switchTab(this, 'transit')">🚌 대중교통</button>
-            <button class="dir-tab" onclick="switchTab(this, 'charter')">🎫 전세버스</button>
+        <div class="dir-tab-wrap">
+            <button class="dir-tab-btn active" onclick="switchDir('subway', this)">지하철</button>
+            <button class="dir-tab-btn" onclick="switchDir('bus', this)">버스</button>
         </div>
 
-        <div id="tab-car" class="dir-content active">
-            <ul class="dir-list">
-                <li><strong>서울 방향</strong><br>○○고속도로 → ○○IC 진출 → ○○ 방향으로 ○km</li>
-                <li><strong>주차</strong><br>컨벤션 내 주차장 이용 가능</li>
-            </ul>
+        <div class="dir-panel active" id="dir-subway">
+            <div class="dir-item">
+                <p class="dir-item-label"><span class="dir-line dir-line-2">2</span> 삼성역 5번 출구</p>
+                <p class="dir-text">5번 출구에서 직진 후 현대백화점 코너 우측 방향 약 150m 지점 도심공항터미널 3층 (약 7분)</p>
+                <p class="dir-note">지하 코엑스몰 이동보다는 지상으로 찾아오시면 편리합니다.</p>
+            </div>
+            <div class="dir-item">
+                <p class="dir-item-label"><span class="dir-line dir-line-9">9</span> 봉은사역 7번 출구</p>
+                <p class="dir-text">도보 약 10분</p>
+            </div>
         </div>
 
-        <div id="tab-transit" class="dir-content">
-            <ul class="dir-list">
-                <li><strong>지하철</strong><br>○○역 ○번 출구 → 도보 ○분</li>
-                <li><strong>버스</strong><br>○○번 버스 → ○○정류장 하차</li>
-            </ul>
-        </div>
-
-        <div id="tab-charter" class="dir-content">
-            <div class="charter-info">
-                <h4>🚌 대전 출발 전세버스 안내</h4>
-                <table class="charter-table">
-                    <tr><th>출발지</th><td>대전 ○○○ 앞</td></tr>
-                    <tr><th>출발 시간</th><td>오전 ○○시 ○○분</td></tr>
-                    <tr><th>귀환 시간</th><td>오후 ○○시 ○○분 (예정)</td></tr>
-                    <tr><th>비용</th><td>무료 / 1인 ○○,000원</td></tr>
-                    <tr><th>예약 문의</th><td><a href="tel:010-0000-0000" class="charter-tel">010-0000-0000</a></td></tr>
-                </table>
-                <p class="charter-note">※ 좌석이 한정되어 있으니 사전에 꼭 신청해 주세요.<br>※ 자세한 사항은 담당자에게 문의해 주세요.</p>
+        <div class="dir-panel" id="dir-bus">
+            <div class="dir-item">
+                <p class="dir-item-label">한국무역센터삼성역 정류장 <span class="dir-code">23-201</span></p>
+                <p class="dir-text">하차 후 현대백화점 방면 200m 직진 → 우측 150m 도심공항터미널 3층 (약 6분)</p>
+                <div class="dir-bus-group">
+                    <span class="dir-bus-type">간선</span><span class="dir-bus-nums">146 · 333 · 341 · 360 · 740</span>
+                </div>
+                <div class="dir-bus-group">
+                    <span class="dir-bus-type">지선</span><span class="dir-bus-nums">3411</span>
+                </div>
+                <div class="dir-bus-group">
+                    <span class="dir-bus-type">광역</span><span class="dir-bus-nums">M6450</span>
+                </div>
+                <div class="dir-bus-group">
+                    <span class="dir-bus-type">마을</span><span class="dir-bus-nums">강남07 · 강남08</span>
+                </div>
+                <div class="dir-bus-group">
+                    <span class="dir-bus-type">직행</span><span class="dir-bus-nums">1100 · 1700 · 2000 · 2000-1 · 7007 · 500-2 · 9303</span>
+                </div>
+            </div>
+            <div class="dir-item">
+                <p class="dir-item-label">삼성역 정류장 <span class="dir-code">23-804</span></p>
+                <p class="dir-text">하차 후 현대백화점 방면 150m → 우측 150m 도심공항터미널 3층</p>
+                <div class="dir-bus-group">
+                    <span class="dir-bus-type">공항</span><span class="dir-bus-nums">6000 · 6704</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ====== 마음 전하기 ====== -->
     <section class="section account-section reveal">
-        <h2 class="section-heading">마 음 전 하 기</h2>
-        <p class="account-desc">직접 참석이 어려우신 분들을 위해<br>계좌번호를 안내드립니다.</p>
+        <h2 class="section-heading">마음 전하실 곳</h2>
+        <p class="account-desc">멀리서도 축하의 마음을<br>전하고 싶으신 분들을 위해<br>계좌번호를 안내드립니다.<br><br>소중한 축하를 보내주셔서 감사드리며,<br>따뜻한 마음에 깊이 감사드립니다.</p>
 
         <div class="acc-group">
             <button class="acc-toggle" onclick="toggleAcc(this)" aria-expanded="false">
@@ -329,7 +330,7 @@
             <div class="acc-content" hidden>
                 <div class="acc-item">
                     <div class="acc-info">
-                        <span class="acc-role">신랑</span><span class="acc-name">한범</span>
+                        <span class="acc-role">신랑</span><span class="acc-name">고한범</span>
                         <span class="acc-bank">○○은행 000-0000-0000</span>
                     </div>
                     <button class="copy-acc-btn" onclick="copyAcct('000-0000-0000', this)">복사</button>
@@ -358,24 +359,24 @@
             <div class="acc-content" hidden>
                 <div class="acc-item">
                     <div class="acc-info">
-                        <span class="acc-role">신부</span><span class="acc-name">수희</span>
-                        <span class="acc-bank">○○은행 000-0000-0000</span>
+                        <span class="acc-role">신부</span><span class="acc-name">윤수희</span>
+                        <span class="acc-bank">우리은행 1002-838-813299</span>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('000-0000-0000', this)">복사</button>
+                    <button class="copy-acc-btn" onclick="copyAcct('1002-838-813299', this)">복사</button>
                 </div>
                 <div class="acc-item">
                     <div class="acc-info">
                         <span class="acc-role">아버지</span><span class="acc-name">윤춘호</span>
-                        <span class="acc-bank">○○은행 000-0000-0000</span>
+                        <span class="acc-bank">기업은행 010-3887-5095</span>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('000-0000-0000', this)">복사</button>
+                    <button class="copy-acc-btn" onclick="copyAcct('010-3887-5095', this)">복사</button>
                 </div>
                 <div class="acc-item">
                     <div class="acc-info">
                         <span class="acc-role">어머니</span><span class="acc-name">박계숙</span>
-                        <span class="acc-bank">○○은행 000-0000-0000</span>
+                        <span class="acc-bank">SC제일은행 173-20-04-7943</span>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('000-0000-0000', this)">복사</button>
+                    <button class="copy-acc-btn" onclick="copyAcct('173-20-04-7943', this)">복사</button>
                 </div>
             </div>
         </div>
@@ -385,39 +386,16 @@
     <!-- ====== 방명록 ====== -->
     <section class="section guestbook-section reveal">
         <h2 class="section-heading">방 명 록</h2>
-        <p class="guestbook-desc">축하 메시지를 남겨주세요 ♥</p>
+        <p class="guestbook-desc">따뜻한 축하의 말씀을 남겨주세요.<br><span class="guestbook-desc-en">Leave a heartfelt message for the couple.</span></p>
         <form class="gb-form" onsubmit="submitGuestbook(event)">
             <input class="gb-input" type="text" id="gb-name" placeholder="이름" maxlength="20" required>
             <textarea class="gb-textarea" id="gb-msg" placeholder="축하 메시지를 입력하세요" maxlength="200" rows="3" required></textarea>
-            <input class="gb-input" type="password" id="gb-pw" placeholder="간단 비밀번호 (수정·삭제용)" maxlength="20" required>
             <button class="gb-submit" type="submit">메시지 남기기</button>
         </form>
-        <div class="gb-list" id="gb-list"></div>
+        <button class="gb-list-toggle" id="gb-list-toggle" onclick="toggleGbList()">방명록 보기</button>
+        <div class="gb-list hidden" id="gb-list"></div>
     </section>
 
-    <!-- ====== 방명록 비밀번호 모달 ====== -->
-    <div class="gb-modal" id="gb-modal">
-        <div class="gb-modal-box">
-            <p class="gb-modal-title" id="gb-modal-title">비밀번호 확인</p>
-            <input class="gb-input" type="password" id="gb-modal-pw" placeholder="비밀번호 입력" maxlength="20">
-            <div class="gb-modal-btns">
-                <button class="gb-modal-cancel" onclick="closeGbModal()">취소</button>
-                <button class="gb-modal-confirm" id="gb-modal-confirm" onclick="confirmGbModal()">확인</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ====== 방명록 수정 모달 ====== -->
-    <div class="gb-modal" id="gb-edit-modal">
-        <div class="gb-modal-box">
-            <p class="gb-modal-title">메시지 수정</p>
-            <textarea class="gb-textarea" id="gb-edit-msg" rows="4" maxlength="200"></textarea>
-            <div class="gb-modal-btns">
-                <button class="gb-modal-cancel" onclick="closeEditModal()">취소</button>
-                <button class="gb-modal-confirm" onclick="confirmEdit()">저장</button>
-            </div>
-        </div>
-    </div>
 
     <footer class="footer">
         <p class="footer-names">고한범 ♥ 윤수희</p>

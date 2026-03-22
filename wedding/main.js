@@ -219,6 +219,13 @@ function setMusicState(playing) {
     }
 }
 
+function switchDir(panel, btn) {
+    document.querySelectorAll('.dir-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.dir-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('dir-' + panel).classList.add('active');
+}
+
 function toggleContact() {
     const list = document.getElementById('contact-list');
     const arrow = document.getElementById('contact-arrow');
@@ -380,27 +387,14 @@ async function renderGuestbook() {
     list.innerHTML = entries.map(e => {
         const date = (e.created_at || '').slice(0, 10).replace(/-/g, '.');
         return `
-        <div class="gb-item" data-id="${e.id}" data-msg="${escapeHtml(e.message)}">
+        <div class="gb-item">
             <div class="gb-item-header">
                 <span class="gb-item-name">${escapeHtml(e.name)}</span>
-                <div class="gb-item-actions">
-                    <span class="gb-item-date">${date}</span>
-                    <button class="gb-action-btn gb-edit-btn">수정</button>
-                    <button class="gb-action-btn del gb-del-btn">삭제</button>
-                </div>
+                <span class="gb-item-date">${date}</span>
             </div>
             <p class="gb-item-msg">${escapeHtml(e.message)}</p>
         </div>`;
     }).join('');
-
-    list.querySelectorAll('.gb-edit-btn').forEach(btn => {
-        const item = btn.closest('.gb-item');
-        btn.addEventListener('click', () => openEditModal(item.dataset.id, item.dataset.msg));
-    });
-    list.querySelectorAll('.gb-del-btn').forEach(btn => {
-        const item = btn.closest('.gb-item');
-        btn.addEventListener('click', () => openDeleteModal(item.dataset.id));
-    });
 }
 
 /* 등록 */
@@ -408,8 +402,7 @@ async function submitGuestbook(e) {
     e.preventDefault();
     const name = document.getElementById('gb-name').value.trim();
     const msg  = document.getElementById('gb-msg').value.trim();
-    const pw   = document.getElementById('gb-pw').value;
-    if (!name || !msg || !pw) return;
+    if (!name || !msg) return;
 
     const btn = e.target.querySelector('.gb-submit');
     btn.disabled = true;
@@ -419,7 +412,7 @@ async function submitGuestbook(e) {
         const res = await fetch(`${SUPABASE_URL}/rest/v1/guestbook`, {
             method: 'POST',
             headers: gbHeaders,
-            body: JSON.stringify({ name, message: msg, password: pw })
+            body: JSON.stringify({ name, message: msg })
         });
         if (!res.ok) {
             const errText = await res.text();
@@ -428,7 +421,6 @@ async function submitGuestbook(e) {
         }
         document.getElementById('gb-name').value = '';
         document.getElementById('gb-msg').value = '';
-        document.getElementById('gb-pw').value = '';
         await renderGuestbook();
         showToast('메시지가 등록되었습니다 ♥');
     } catch {
@@ -439,117 +431,6 @@ async function submitGuestbook(e) {
     }
 }
 
-/* ── 비밀번호 모달 ── */
-let gbPending = null; /* { type: 'edit'|'delete', id, msg? } */
-
-function openDeleteModal(id) {
-    gbPending = { type: 'delete', id };
-    document.getElementById('gb-modal-title').textContent = '삭제하시겠습니까?';
-    document.getElementById('gb-modal-confirm').textContent = '삭제';
-    document.getElementById('gb-modal-pw').value = '';
-    document.getElementById('gb-modal').classList.add('open');
-    setTimeout(() => document.getElementById('gb-modal-pw').focus(), 100);
-}
-
-function openEditModal(id, msg) {
-    gbPending = { type: 'edit', id };
-    document.getElementById('gb-modal-title').textContent = '수정하려면 비밀번호를 입력하세요';
-    document.getElementById('gb-modal-confirm').textContent = '확인';
-    document.getElementById('gb-modal-pw').value = '';
-    document.getElementById('gb-modal').classList.add('open');
-    /* 검증 후 열릴 수정 모달에 기존 메시지 미리 세팅 */
-    document.getElementById('gb-edit-msg').value = msg;
-    setTimeout(() => document.getElementById('gb-modal-pw').focus(), 100);
-}
-
-function closeGbModal() {
-    document.getElementById('gb-modal').classList.remove('open');
-    gbPending = null;
-}
-
-async function confirmGbModal() {
-    const pw = document.getElementById('gb-modal-pw').value;
-    if (!pw) { showToast('비밀번호를 입력해 주세요.'); return; }
-
-    const confirmBtn = document.getElementById('gb-modal-confirm');
-    confirmBtn.disabled = true;
-
-    try {
-        /* 비밀번호 검증: id + password 일치하는 행 조회 */
-        const res = await fetch(
-            `${SUPABASE_URL}/rest/v1/guestbook?id=eq.${gbPending.id}&password=eq.${encodeURIComponent(pw)}&select=id`,
-            { headers: gbHeaders }
-        );
-        const rows = await res.json();
-        if (!rows.length) {
-            showToast('비밀번호가 맞지 않습니다.');
-            return;
-        }
-
-        if (gbPending.type === 'delete') {
-            await fetch(`${SUPABASE_URL}/rest/v1/guestbook?id=eq.${gbPending.id}`, {
-                method: 'DELETE',
-                headers: gbHeaders
-            });
-            closeGbModal();
-            await renderGuestbook();
-            showToast('메시지가 삭제되었습니다.');
-        } else {
-            /* 수정: 비밀번호 모달 닫고 수정 모달 열기 */
-            document.getElementById('gb-modal').classList.remove('open');
-            document.getElementById('gb-edit-modal').classList.add('open');
-            setTimeout(() => document.getElementById('gb-edit-msg').focus(), 100);
-        }
-    } catch {
-        showToast('오류가 발생했습니다. 다시 시도해 주세요.');
-    } finally {
-        confirmBtn.disabled = false;
-    }
-}
-
-/* ── 수정 모달 ── */
-function closeEditModal() {
-    document.getElementById('gb-edit-modal').classList.remove('open');
-    gbPending = null;
-}
-
-async function confirmEdit() {
-    const newMsg = document.getElementById('gb-edit-msg').value.trim();
-    if (!newMsg || !gbPending) return;
-
-    const btn = document.querySelector('#gb-edit-modal .gb-modal-confirm');
-    btn.disabled = true;
-    btn.textContent = '저장 중...';
-
-    try {
-        await fetch(`${SUPABASE_URL}/rest/v1/guestbook?id=eq.${gbPending.id}`, {
-            method: 'PATCH',
-            headers: gbHeaders,
-            body: JSON.stringify({ message: newMsg })
-        });
-        closeEditModal();
-        await renderGuestbook();
-        showToast('메시지가 수정되었습니다.');
-    } catch {
-        showToast('수정 중 오류가 발생했습니다.');
-    } finally {
-        btn.disabled = false;
-        btn.textContent = '저장';
-    }
-}
-
-/* 모달 바깥 클릭 시 닫기 */
-document.getElementById('gb-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeGbModal();
-});
-document.getElementById('gb-edit-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeEditModal();
-});
-
-/* Enter 키로 비밀번호 확인 */
-document.getElementById('gb-modal-pw').addEventListener('keydown', e => {
-    if (e.key === 'Enter') confirmGbModal();
-});
 
 function escapeHtml(str) {
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
