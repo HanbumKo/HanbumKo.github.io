@@ -18,37 +18,37 @@ const VENUE = {
     kakaoPlaceId: '8229296',
 };
 
-/* ====== 갤러리 이미지 목록 (TODO: 실제 파일명으로 수정) ======
+/* ====== 갤러리 이미지 목록 ======
    - 처음 6장: 페이지 로드 시 바로 표시
    - 나머지 18장: '더보기' 버튼 클릭 시 표시
-   - 실제 사진 파일을 images/ 폴더에 넣고 파일명을 아래에 입력하세요
+   - 사진 파일은 images/gallery/ 폴더에 있습니다
    ============================================================ */
 const GALLERY_IMAGES = [
-    'images/IMG_6983.JPG', // 1
-    'images/IMG_6983.JPG', // 2
-    'images/IMG_6983.JPG', // 3
-    'images/IMG_6983.JPG', // 4
-    'images/IMG_6983.JPG', // 5
-    'images/IMG_6983.JPG', // 6  ← 여기까지 처음 표시
+    'images/gallery/1.jpg',  // 1
+    'images/gallery/2.jpg',  // 2
+    'images/gallery/3.jpg',  // 3
+    'images/gallery/4.jpg',  // 4
+    'images/gallery/5.jpg',  // 5
+    'images/gallery/6.jpg',  // 6  ← 여기까지 처음 표시
     /* ── 아래는 '더보기' 클릭 시 표시 ── */
-    'images/IMG_6983.JPG', // 7
-    'images/IMG_6983.JPG', // 8
-    'images/IMG_6983.JPG', // 9
-    'images/IMG_6983.JPG', // 10
-    'images/IMG_6983.JPG', // 11
-    'images/IMG_6983.JPG', // 12
-    'images/IMG_6983.JPG', // 13
-    'images/IMG_6983.JPG', // 14
-    'images/IMG_6983.JPG', // 15
-    'images/IMG_6983.JPG', // 16
-    'images/IMG_6983.JPG', // 17
-    'images/IMG_6983.JPG', // 18
-    'images/IMG_6983.JPG', // 19
-    'images/IMG_6983.JPG', // 20
-    'images/IMG_6983.JPG', // 21
-    'images/IMG_6983.JPG', // 22
-    'images/IMG_6983.JPG', // 23
-    'images/IMG_6983.JPG', // 24
+    'images/gallery/7.jpg',  // 7
+    'images/gallery/8.jpg',  // 8
+    'images/gallery/9.jpg',  // 9
+    'images/gallery/10.jpg', // 10
+    'images/gallery/11(액자컷).jpg', // 11
+    'images/gallery/12.jpg', // 12
+    'images/gallery/13.jpg', // 13
+    'images/gallery/14.jpg', // 14
+    'images/gallery/15.jpg', // 15
+    'images/gallery/16.jpg', // 16
+    'images/gallery/17.jpg', // 17
+    'images/gallery/18.jpg', // 18
+    'images/gallery/19.jpg', // 19
+    'images/gallery/20.jpg', // 20
+    'images/gallery/21.jpg', // 21
+    'images/gallery/22.jpg', // 22
+    'images/gallery/23.jpg', // 23
+    'images/gallery/24.jpg', // 24
 ];
 const GALLERY_INITIAL = 6;
 let galleryExpanded = false;
