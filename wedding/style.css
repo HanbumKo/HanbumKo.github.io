@@ -1,18 +1,18 @@
 /* ====== FONTS & ROOT ====== */
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Great+Vibes&display=swap');
 
 :root {
-    --bg: #faf8f5;
-    --bg-alt: #f3efe9;
-    --gold: #b8975a;
-    --gold-light: #d4b483;
-    --brown: #3d3228;
-    --brown-mid: #6b5a47;
-    --brown-light: #9c8878;
-    --rose: #c9868a;
+    --bg: #f7f7f8;
+    --bg-alt: #efeff1;
+    --gold: #9a9aaa;
+    --gold-light: #bbbbc8;
+    --brown: #2c2c32;
+    --brown-mid: #686878;
+    --brown-light: #9898a8;
+    --rose: #a8a0b0;
     --white: #ffffff;
-    --border: #e0d6c8;
-    --shadow: rgba(61, 50, 40, 0.12);
+    --border: #dadadf;
+    --shadow: rgba(30, 30, 40, 0.08);
     --radius: 12px;
     --max-w: 480px;
 }
@@ -83,67 +83,86 @@ button {
 /* ====== COVER ====== */
 .cover {
     position: relative;
-    height: 100vh;       /* fallback */
-    height: 100svh;      /* 모바일 주소창 제외 */
-    min-height: 600px;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg);
+    padding-bottom: 48px;
+}
+.cover-img-wrap {
+    position: relative;
+    width: 100%;
+}
+.cover-img-wrap::before,
+.cover-img-wrap::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    z-index: 1;
+    pointer-events: none;
+}
+.cover-img-wrap::before {
+    top: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 56' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L390,0 L390,36 C340,44 290,50 240,46 C190,42 150,38 100,42 C60,46 28,52 0,48 Z' fill='%23f7f7f8'/%3E%3C/svg%3E") no-repeat top center / 100% 100%;
+}
+.cover-img-wrap::after {
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 56' preserveAspectRatio='none'%3E%3Cpath d='M0,56 L390,56 L390,20 C362,16 330,10 290,14 C240,18 190,24 140,18 C90,12 44,8 0,14 Z' fill='%23f7f7f8'/%3E%3C/svg%3E") no-repeat bottom center / 100% 100%;
 }
 .cover-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    filter: brightness(0.72);
+    height: auto;
+    display: block;
 }
-.cover-overlay {
-    position: absolute;
-    inset: 0;
+.cover-text {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-items: center;
-    padding-bottom: 80px;
     text-align: center;
-    color: var(--white);
+    padding: 32px 24px 0;
+}
+.cover-invite {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 .cover-pre {
-    font-family: 'Nanum Myeongjo', serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.5em;
-    opacity: 0.9;
-    margin-bottom: 14px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.4rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    line-height: 1.2;
 }
 .cover-names {
-    font-family: 'Nanum Myeongjo', serif;
-    font-size: 2.6rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 20px;
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--brown);
+    margin: 0 0 6px;
+    letter-spacing: 0.06em;
 }
 .cover-names em {
     font-style: normal;
-    color: var(--gold-light);
-    font-size: 1.8rem;
+    color: var(--gold);
+    font-size: 1.6rem;
     margin: 0 8px;
 }
-.cover-info {
-    font-size: 0.88rem;
-    letter-spacing: 0.1em;
-    opacity: 0.88;
-    line-height: 1.9;
-}
-.cover-scroll-hint {
-    position: absolute;
-    bottom: 22px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgba(255,255,255,0.6);
-    font-size: 1.3rem;
-    animation: bounce 1.8s infinite;
-}
-@keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
+.cover-names-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--brown-mid);
+    letter-spacing: 0.06em;
 }
 
 /* ====== INVITE ====== */
@@ -1030,17 +1049,19 @@ button {
 
 /* ====== MUSIC BUTTON ====== */
 .music-btn {
-    position: fixed;
-    bottom: 26px;
-    right: 20px;
-    width: 48px;
-    height: 48px;
+    position: absolute;
+    bottom: 20px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: var(--brown);
+    background: rgba(255,255,255,0.22);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     color: var(--white);
-    border: none;
-    box-shadow: 0 3px 14px rgba(0,0,0,0.28);
-    z-index: 1000;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;

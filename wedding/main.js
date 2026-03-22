@@ -231,22 +231,6 @@ function toggleMusic() {
     }
 }
 
-/* 자동 재생 — 브라우저 정책상 사용자 첫 상호작용 후 재생됨 */
-(function initAutoplay() {
-    const audio = document.getElementById('bgm');
-    /* 즉시 시도 (일부 브라우저 허용) */
-    audio.play().then(() => setMusicState(true)).catch(() => {
-        /* 차단된 경우 첫 터치/클릭/스크롤 시 재생 */
-        const trigger = ['touchstart', 'click', 'scroll', 'keydown'];
-        function onFirstInteraction() {
-            if (!musicPlaying) {
-                audio.play().then(() => setMusicState(true)).catch(() => {});
-            }
-            trigger.forEach(ev => document.removeEventListener(ev, onFirstInteraction));
-        }
-        trigger.forEach(ev => document.addEventListener(ev, onFirstInteraction, { once: true, passive: true }));
-    });
-})();
 
 /* ====== 스크롤 reveal ====== */
 function checkReveal() {

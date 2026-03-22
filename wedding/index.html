@@ -20,7 +20,7 @@
     <meta name="twitter:image"       content="https://hanbumko.github.io/wedding2/images/gallery/19.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,32 +29,31 @@
     <audio id="bgm" loop preload="none">
         <source src="audio/bgm.mp3" type="audio/mpeg">
     </audio>
-    <button class="music-btn" id="music-btn" onclick="toggleMusic()" title="배경음악">
-        <svg class="music-icon" id="music-icon-play" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/>
-        </svg>
-        <svg class="music-icon hidden" id="music-icon-pause" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-        </svg>
-    </button>
 
     <!-- ====== 커버 ====== -->
     <section class="cover">
-        <img src="images/gallery/19.jpg" alt="고한범 윤수희" class="cover-img">
-        <div class="cover-overlay">
-            <p class="cover-pre">우 리 결 혼 합 니 다</p>
-            <h1 class="cover-names">고한범 <em>&amp;</em> 윤수희</h1>
-            <div class="cover-info">
-                <p>2026 · 06 · 27 SAT PM 3:00</p>
-                <p>소노펠리체 컨벤션</p>
-            </div>
+        <div class="cover-img-wrap">
+            <img src="images/gallery/19.jpg" alt="고한범 윤수희" class="cover-img">
+            <button class="music-btn" id="music-btn" onclick="toggleMusic()" title="배경음악">
+                <svg class="music-icon" id="music-icon-play" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/>
+                </svg>
+                <svg class="music-icon hidden" id="music-icon-pause" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+            </button>
         </div>
-        <div class="cover-scroll-hint">↓</div>
+        <div class="cover-text">
+            <p class="cover-pre">We are getting married</p>
+            <h1 class="cover-names">고한범 <em>&amp;</em> 윤수희</h1>
+            <p class="cover-names-en">Hanbum Ko &amp; Suhee Yoon</p>
+        </div>
     </section>
 
     <!-- ====== 초대 글 ====== -->
     <section class="section invite-section reveal">
         <div class="ornament">✦</div>
+        <p class="cover-invite">소중한 분들을 초대합니다.</p>
         <p class="invite-poem">
             서로가 서로의 곁에 있어<br>
             행복했던 시간들을<br>
@@ -77,19 +76,17 @@
         </div>
     </section>
 
-    <!-- ====== 우리의 이야기 (타임라인) ====== -->
+    <!-- ====== 우리의 이야기 (타임라인) ======
     <section class="section timeline-section">
         <h2 class="section-heading">우 리 의 이 야 기</h2>
         <div class="tl-wrap">
             <div class="tl-line"></div>
 
-            <!-- TODO: 아래 img src를 실제 사진 경로로 교체하세요 -->
-
             <div class="tl-item reveal">
                 <div class="tl-dot"></div>
                 <div class="tl-card">
                     <div class="tl-img-wrap">
-                        <img src="images/IMG_6983.JPG" alt="첫만남" loading="lazy">
+                        <img src="images/gallery/1.jpg" alt="첫만남" loading="lazy">
                     </div>
                     <div class="tl-body">
                         <span class="tl-label">첫 만 남</span>
@@ -102,7 +99,7 @@
                 <div class="tl-dot"></div>
                 <div class="tl-card">
                     <div class="tl-img-wrap">
-                        <img src="images/IMG_6983.JPG" alt="사내커플" loading="lazy">
+                        <img src="images/gallery/2.jpg" alt="사내커플" loading="lazy">
                     </div>
                     <div class="tl-body">
                         <span class="tl-label">사 내 커 플</span>
@@ -115,7 +112,7 @@
                 <div class="tl-dot"></div>
                 <div class="tl-card">
                     <div class="tl-img-wrap">
-                        <img src="images/IMG_6983.JPG" alt="함께한 여행" loading="lazy">
+                        <img src="images/gallery/3.jpg" alt="함께한 여행" loading="lazy">
                     </div>
                     <div class="tl-body">
                         <span class="tl-label">함 께 한 여 행</span>
@@ -128,7 +125,7 @@
                 <div class="tl-dot"></div>
                 <div class="tl-card">
                     <div class="tl-img-wrap">
-                        <img src="images/IMG_6983.JPG" alt="결혼준비" loading="lazy">
+                        <img src="images/gallery/4.jpg" alt="결혼준비" loading="lazy">
                     </div>
                     <div class="tl-body">
                         <span class="tl-label">결 혼 준 비</span>
@@ -139,6 +136,7 @@
 
         </div>
     </section>
+    ====================================================== -->
 
     <!-- ====== 날짜 & 달력 ====== -->
     <section class="section date-section reveal">
