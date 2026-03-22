@@ -35,7 +35,7 @@ const GALLERY_IMAGES = [
     'images/gallery/8.jpg',  // 8
     'images/gallery/9.jpg',  // 9
     'images/gallery/10.jpg', // 10
-    'images/gallery/11(액자컷).jpg', // 11
+    'images/gallery/11.jpg', // 11
     'images/gallery/12.jpg', // 12
     'images/gallery/13.jpg', // 13
     'images/gallery/14.jpg', // 14
