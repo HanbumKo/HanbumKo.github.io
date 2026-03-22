@@ -219,6 +219,13 @@ function setMusicState(playing) {
     }
 }
 
+function toggleContact() {
+    const list = document.getElementById('contact-list');
+    const arrow = document.getElementById('contact-arrow');
+    const isHidden = list.classList.toggle('hidden');
+    arrow.textContent = isHidden ? '▾' : '▴';
+}
+
 function toggleMusic() {
     const audio = document.getElementById('bgm');
     if (musicPlaying) {

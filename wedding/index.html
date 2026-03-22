@@ -63,15 +63,51 @@
             저희의 새 출발을 축복해 주시면<br>
             더없는 기쁨이 되겠습니다.
         </p>
+        <p class="invite-poem-en">
+            The happy moments we spent by each other's side<br>
+            we now wish to make our everyday life together.<br><br>
+            We would be overjoyed if you could join us<br>
+            and bless the beginning of our new journey.
+        </p>
+    </section>
+
+    <!-- ====== 가족 소개 ====== -->
+    <section class="section family-section reveal">
         <div class="family-block">
             <div class="family-col">
                 <span class="parent-label">고윤열 · 박승옥의 아들</span>
-                <span class="person-name">고 한 범</span>
+                <span class="person-name">한 범</span>
             </div>
             <div class="heart-mid">♥</div>
             <div class="family-col">
                 <span class="parent-label">윤춘호 · 박계숙의 딸</span>
-                <span class="person-name">윤 수 희</span>
+                <span class="person-name">수 희</span>
+            </div>
+        </div>
+
+        <button class="contact-toggle-btn" onclick="toggleContact()">
+            혼주에게 연락하기 <span class="contact-toggle-arrow" id="contact-arrow">▾</span>
+        </button>
+        <div class="contact-list hidden" id="contact-list">
+            <div class="contact-row">
+                <span class="contact-row-role">신랑 아버지</span>
+                <span class="contact-row-name">고윤열</span>
+                <a href="tel:010-0000-0000" class="contact-call-btn">📞</a>
+            </div>
+            <div class="contact-row">
+                <span class="contact-row-role">신랑 어머니</span>
+                <span class="contact-row-name">박승옥</span>
+                <a href="tel:010-0000-0000" class="contact-call-btn">📞</a>
+            </div>
+            <div class="contact-row">
+                <span class="contact-row-role">신부 아버지</span>
+                <span class="contact-row-name">윤춘호</span>
+                <a href="tel:010-0000-0000" class="contact-call-btn">📞</a>
+            </div>
+            <div class="contact-row">
+                <span class="contact-row-role">신부 어머니</span>
+                <span class="contact-row-name">박계숙</span>
+                <a href="tel:010-0000-0000" class="contact-call-btn">📞</a>
             </div>
         </div>
     </section>
@@ -140,9 +176,9 @@
 
     <!-- ====== 날짜 & 달력 ====== -->
     <section class="section date-section reveal">
-        <h2 class="section-heading">일 시</h2>
-        <p class="date-main">2026년 6월 27일 토요일</p>
-        <p class="date-time">오후 3시</p>
+        <h2 class="section-heading">예 식 안 내</h2>
+        <p class="date-main">2026년 6월 27일 토요일 오후 3시</p>
+        <p class="date-venue">소노펠리체 컨벤션 단독홀</p>
         <div class="dday-box">
             <span class="dday-d">D</span><span class="dday-minus">-</span><span class="dday-num" id="dday-num">??</span>
         </div>
@@ -293,7 +329,7 @@
             <div class="acc-content" hidden>
                 <div class="acc-item">
                     <div class="acc-info">
-                        <span class="acc-role">신랑</span><span class="acc-name">고한범</span>
+                        <span class="acc-role">신랑</span><span class="acc-name">한범</span>
                         <span class="acc-bank">○○은행 000-0000-0000</span>
                     </div>
                     <button class="copy-acc-btn" onclick="copyAcct('000-0000-0000', this)">복사</button>
@@ -322,7 +358,7 @@
             <div class="acc-content" hidden>
                 <div class="acc-item">
                     <div class="acc-info">
-                        <span class="acc-role">신부</span><span class="acc-name">윤수희</span>
+                        <span class="acc-role">신부</span><span class="acc-name">수희</span>
                         <span class="acc-bank">○○은행 000-0000-0000</span>
                     </div>
                     <button class="copy-acc-btn" onclick="copyAcct('000-0000-0000', this)">복사</button>
@@ -345,36 +381,6 @@
         </div>
     </section>
 
-    <!-- ====== 연락하기 ====== -->
-    <section class="section contact-section reveal">
-        <h2 class="section-heading">연 락 하 기</h2>
-        <div class="contact-grid">
-            <div class="contact-block">
-                <p class="contact-role">신랑</p><p class="contact-name">고한범</p>
-                <a href="tel:010-0000-0000" class="call-btn">📞 전화</a>
-            </div>
-            <div class="contact-block">
-                <p class="contact-role">신부</p><p class="contact-name">윤수희</p>
-                <a href="tel:010-0000-0000" class="call-btn">📞 전화</a>
-            </div>
-            <div class="contact-block">
-                <p class="contact-role">신랑 아버지</p><p class="contact-name">고윤열</p>
-                <a href="tel:010-0000-0000" class="call-btn">📞 전화</a>
-            </div>
-            <div class="contact-block">
-                <p class="contact-role">신부 아버지</p><p class="contact-name">윤춘호</p>
-                <a href="tel:010-0000-0000" class="call-btn">📞 전화</a>
-            </div>
-            <div class="contact-block">
-                <p class="contact-role">신랑 어머니</p><p class="contact-name">박승옥</p>
-                <a href="tel:010-0000-0000" class="call-btn">📞 전화</a>
-            </div>
-            <div class="contact-block">
-                <p class="contact-role">신부 어머니</p><p class="contact-name">박계숙</p>
-                <a href="tel:010-0000-0000" class="call-btn">📞 전화</a>
-            </div>
-        </div>
-    </section>
 
     <!-- ====== 방명록 ====== -->
     <section class="section guestbook-section reveal">

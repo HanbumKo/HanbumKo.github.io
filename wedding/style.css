@@ -181,8 +181,73 @@ button {
     font-size: 1rem;
     line-height: 2;
     color: var(--brown-mid);
-    margin-bottom: 44px;
+    margin-bottom: 28px;
 }
+.invite-poem-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: var(--brown-light);
+    margin-bottom: 0;
+}
+.family-section {
+    background: var(--bg-alt);
+}
+.contact-toggle-btn {
+    margin-top: 28px;
+    padding: 10px 24px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    color: var(--brown-mid);
+    background: var(--white);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.contact-toggle-btn:hover { background: var(--bg); }
+.contact-toggle-arrow { font-size: 0.75rem; margin-left: 4px; }
+.contact-list {
+    margin-top: 16px;
+    width: 100%;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contact-list.hidden { display: none; }
+.contact-row {
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 10px 16px;
+    gap: 8px;
+}
+.contact-row-role {
+    font-size: 0.75rem;
+    color: var(--brown-light);
+    min-width: 70px;
+}
+.contact-row-name {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 0.92rem;
+    color: var(--brown);
+    flex: 1;
+}
+.contact-call-btn {
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: var(--bg-alt);
+    transition: background 0.2s;
+}
+.contact-call-btn:hover { background: var(--border); }
 .family-block {
     display: flex;
     align-items: center;
@@ -305,13 +370,17 @@ button {
     background: var(--bg-alt);
 }
 .date-main {
-    font-family: 'Nanum Myeongjo', serif;
-    font-size: 1.25rem;
-    margin-bottom: 6px;
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 1.05rem;
+    color: var(--brown);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
 }
-.date-time {
-    font-size: 0.95rem;
-    color: var(--brown-mid);
+.date-venue {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 1.05rem;
+    color: var(--brown);
+    letter-spacing: 0.04em;
     margin-bottom: 24px;
 }
 .dday-box {
