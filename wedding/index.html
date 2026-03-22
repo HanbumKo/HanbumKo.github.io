@@ -32,6 +32,7 @@
 
     <!-- ====== 커버 ====== -->
     <section class="cover">
+        <p class="cover-top-label">May I hold your hand, today and forever?</p>
         <div class="cover-img-wrap">
             <img src="images/gallery/19.jpg" alt="고한범 윤수희" class="cover-img">
             <button class="music-btn" id="music-btn" onclick="toggleMusic()" title="배경음악">
@@ -75,7 +76,7 @@
     <section class="section family-section reveal">
         <div class="family-block">
             <div class="family-row">
-                <span class="parent-label">고윤열 · 박승옥의 아들</span>
+                <span class="parent-label">고윤열 · 박소은의 아들</span>
                 <span class="person-name">한범</span>
                 <a href="tel:010-6556-8849" class="family-call-btn">📞</a>
             </div>
@@ -93,12 +94,12 @@
             <div class="contact-row">
                 <span class="contact-row-role">신랑 아버지</span>
                 <span class="contact-row-name">고윤열</span>
-                <a href="tel:010-0000-0000" class="contact-call-btn">📞</a>
+                <a href="tel:010-8727-8848" class="contact-call-btn">📞</a>
             </div>
             <div class="contact-row">
                 <span class="contact-row-role">신랑 어머니</span>
-                <span class="contact-row-name">박승옥</span>
-                <a href="tel:010-0000-0000" class="contact-call-btn">📞</a>
+                <span class="contact-row-name">박소은</span>
+                <a href="tel:010-3367-3508" class="contact-call-btn">📞</a>
             </div>
             <div class="contact-row">
                 <span class="contact-row-role">신부 아버지</span>
@@ -181,7 +182,8 @@
         <p class="date-main">2026년 6월 27일 토요일 오후 3시</p>
         <p class="date-venue">소노펠리체 컨벤션 단독홀</p>
         <div class="dday-box">
-            <span class="dday-d">D</span><span class="dday-minus">-</span><span class="dday-num" id="dday-num">??</span>
+            <span class="dday-num" id="dday-num">??</span>
+            <span class="dday-label" id="dday-label">days to go</span>
         </div>
         <div class="calendar">
             <div class="cal-month">2026년 6월</div>
@@ -197,7 +199,7 @@
     <section class="section gallery-section reveal">
         <h2 class="section-heading">갤 러 리</h2>
         <div class="gallery-grid" id="gallery-grid"></div>
-        <button class="gallery-more-btn" id="gallery-more-btn" onclick="toggleGallery()">사진 더보기</button>
+        <button class="gallery-more-btn" id="gallery-more-btn" onclick="toggleGallery()">View More &nbsp;▾</button>
     </section>
 
     <!-- ====== 라이트박스 ====== -->
@@ -316,6 +318,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="welcome-card">
+            <img src="lobby.png" alt="로비" class="welcome-img">
+            <div class="welcome-body">
+                <p class="welcome-title">웰컴드링크 &amp; 재즈 공연</p>
+                <p class="welcome-text">예식 30분 전, 로비에서 재즈 공연과 함께 웰컴 드링크가 제공됩니다. 식후 30분까지 이용 가능하니 마음껏 즐겨주세요.</p>
+            </div>
+        </div>
+
     </section>
 
     <!-- ====== 마음 전하기 ====== -->
@@ -324,36 +335,29 @@
         <p class="account-desc">멀리서도 축하의 마음을<br>전하고 싶으신 분들을 위해<br>계좌번호를 안내드립니다.<br><br>소중한 축하를 보내주셔서 감사드리며,<br>따뜻한 마음에 깊이 감사드립니다.</p>
 
         <div class="acc-group">
-            <button class="acc-toggle" onclick="toggleAcc(this)" aria-expanded="false">
+            <button class="acc-toggle acc-toggle-groom" onclick="toggleAcc(this)" aria-expanded="false">
                 <span>신랑 측</span><span class="acc-arrow">▾</span>
             </button>
             <div class="acc-content" hidden>
                 <div class="acc-item">
                     <div class="acc-info">
                         <span class="acc-role">신랑</span><span class="acc-name">고한범</span>
-                        <span class="acc-bank">○○은행 000-0000-0000</span>
+                        <span class="acc-bank">국민은행 709402-00-266604</span>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('000-0000-0000', this)">복사</button>
+                    <button class="copy-acc-btn" onclick="copyAcct('709402-00-266604', this)">복사</button>
                 </div>
                 <div class="acc-item">
                     <div class="acc-info">
-                        <span class="acc-role">아버지</span><span class="acc-name">고윤열</span>
-                        <span class="acc-bank">○○은행 000-0000-0000</span>
+                        <span class="acc-role">부모님</span><span class="acc-name">고윤열 · 박소은</span>
+                        <span class="acc-bank">기업은행 364-025140-02-015</span>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('000-0000-0000', this)">복사</button>
-                </div>
-                <div class="acc-item">
-                    <div class="acc-info">
-                        <span class="acc-role">어머니</span><span class="acc-name">박승옥</span>
-                        <span class="acc-bank">○○은행 000-0000-0000</span>
-                    </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('000-0000-0000', this)">복사</button>
+                    <button class="copy-acc-btn" onclick="copyAcct('364-025140-02-015', this)">복사</button>
                 </div>
             </div>
         </div>
 
         <div class="acc-group">
-            <button class="acc-toggle" onclick="toggleAcc(this)" aria-expanded="false">
+            <button class="acc-toggle acc-toggle-bride" onclick="toggleAcc(this)" aria-expanded="false">
                 <span>신부 측</span><span class="acc-arrow">▾</span>
             </button>
             <div class="acc-content" hidden>
@@ -390,17 +394,18 @@
         <form class="gb-form" onsubmit="submitGuestbook(event)">
             <input class="gb-input" type="text" id="gb-name" placeholder="이름" maxlength="20" required>
             <textarea class="gb-textarea" id="gb-msg" placeholder="축하 메시지를 입력하세요" maxlength="200" rows="3" required></textarea>
-            <button class="gb-submit" type="submit">메시지 남기기</button>
+            <button class="gb-submit" type="submit">Leave a Message</button>
         </form>
-        <button class="gb-list-toggle" id="gb-list-toggle" onclick="toggleGbList()">방명록 보기</button>
+        <button class="gb-list-toggle" id="gb-list-toggle" onclick="toggleGbList()">View Messages &nbsp;▾</button>
         <div class="gb-list hidden" id="gb-list"></div>
     </section>
 
 
     <footer class="footer">
-        <p class="footer-names">고한범 ♥ 윤수희</p>
-        <p class="footer-date">2026 · 06 · 27</p>
-        <p class="footer-copy">© 2026 Hanbum &amp; Suhee</p>
+        <p class="footer-names">Hanbum &amp; Suhee</p>
+        <p class="footer-script">forever begins here</p>
+        <p class="footer-date">June 27, 2026</p>
+        <p class="footer-copy">© 2026 Hanbum Ko &amp; Suhee Yoon</p>
     </footer>
 
     <div class="toast" id="toast"></div>

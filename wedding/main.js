@@ -59,15 +59,18 @@ let galleryExpanded = false;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const diff = Math.ceil((wedding - today) / (1000 * 60 * 60 * 24));
-    const el = document.getElementById('dday-num');
-    if (!el) return;
+    const numEl = document.getElementById('dday-num');
+    const labelEl = document.getElementById('dday-label');
+    if (!numEl) return;
     if (diff > 0) {
-        el.textContent = diff;
+        numEl.textContent = diff;
+        if (labelEl) labelEl.textContent = 'days to go';
     } else if (diff === 0) {
-        el.textContent = 'DAY';
-        el.closest('.dday-box').style.background = '#c9868a';
+        numEl.textContent = 'Today';
+        if (labelEl) labelEl.textContent = 'our wedding day';
     } else {
-        el.textContent = '+' + Math.abs(diff);
+        numEl.textContent = Math.abs(diff);
+        if (labelEl) labelEl.textContent = 'days since';
     }
 })();
 
@@ -114,22 +117,17 @@ function renderGallery(count) {
     });
 }
 
-function expandGallery() {
-    galleryExpanded = true;
-    renderGallery(GALLERY_IMAGES.length);
-    document.getElementById('gallery-more-btn').classList.add('hidden');
+function toggleGallery() {
+    galleryExpanded = !galleryExpanded;
+    renderGallery(galleryExpanded ? GALLERY_IMAGES.length : GALLERY_INITIAL);
+    document.getElementById('gallery-more-btn').innerHTML = galleryExpanded ? 'Hide &nbsp;▴' : 'View More &nbsp;▾';
 }
 
 /* 초기 갤러리 렌더링 */
 (function initGallery() {
     renderGallery(GALLERY_INITIAL);
     const moreBtn = document.getElementById('gallery-more-btn');
-    const remaining = GALLERY_IMAGES.length - GALLERY_INITIAL;
-    if (remaining > 0) {
-        document.getElementById('gallery-more-count').textContent = `(+${remaining})`;
-    } else {
-        moreBtn.classList.add('hidden');
-    }
+    if (GALLERY_IMAGES.length <= GALLERY_INITIAL) moreBtn.classList.add('hidden');
 })();
 
 /* ====== 라이트박스 ====== */
@@ -421,13 +419,14 @@ async function submitGuestbook(e) {
         }
         document.getElementById('gb-name').value = '';
         document.getElementById('gb-msg').value = '';
-        await renderGuestbook();
+        const list = document.getElementById('gb-list');
+        if (!list.classList.contains('hidden')) await renderGuestbook();
         showToast('메시지가 등록되었습니다 ♥');
     } catch {
         showToast('등록 중 오류가 발생했습니다. 다시 시도해 주세요.');
     } finally {
         btn.disabled = false;
-        btn.textContent = '메시지 남기기';
+        btn.textContent = 'Leave a Message';
     }
 }
 
@@ -436,7 +435,13 @@ function escapeHtml(str) {
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-document.addEventListener('DOMContentLoaded', renderGuestbook);
+function toggleGbList() {
+    const list = document.getElementById('gb-list');
+    const btn = document.getElementById('gb-list-toggle');
+    const isHidden = list.classList.toggle('hidden');
+    btn.innerHTML = isHidden ? 'View Messages &nbsp;▾' : 'Hide &nbsp;▴';
+    if (!isHidden) renderGuestbook();
+}
 
 /* ====== 계좌 아코디언 ====== */
 function toggleAcc(btn) {
