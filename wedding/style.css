@@ -2,19 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Great+Vibes&display=swap');
 
 :root {
-    --bg:           #f5f5f8;   /* 뉴트럴 그레이 화이트 */
-    --bg-blue:      #eef1f7;   /* 연한 블루-그레이 */
-    --bg-lavender:  #ede9f5;   /* 연한 라벤더 */
-    --bg-alt:       #edeaf2;   /* 공용 alt (중간) */
-    --gold:         #8a86a8;
-    --gold-light:   #b0aac6;
-    --brown:        #2e2a3c;
-    --brown-mid:    #6a6482;
-    --brown-light:  #9890aa;
-    --rose:         #aa9cbc;
+    --bg:           #f9f6f1;   /* 따뜻한 아이보리 */
+    --bg-blue:      #f4ede3;   /* 웜 베이지 */
+    --bg-lavender:  #f0e6dc;   /* 로즈 베이지 */
+    --bg-alt:       #ece3d8;   /* 공용 alt (따뜻한 탠) */
+    --gold:         #9a7a68;   /* 더스티 로즈브라운 */
+    --gold-light:   #c2a492;   /* 연한 더스티 로즈 */
+    --brown:        #3c2a20;   /* 짙은 웜 브라운 */
+    --brown-mid:    #7a5a48;   /* 중간 웜 브라운 */
+    --brown-light:  #a8826e;   /* 연한 웜 브라운 */
+    --rose:         #c49080;   /* 더스티 로즈 */
     --white:        #ffffff;
-    --border:       #d8d4e8;
-    --shadow:       rgba(40, 30, 60, 0.07);
+    --border:       #ddd0c4;
+    --shadow:       rgba(60, 42, 32, 0.07);
     --radius:       12px;
     --max-w:        480px;
     --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
@@ -104,7 +104,7 @@ button {
 .cover-top-right {
     font-family: 'Great Vibes', cursive;
     font-size: 2rem;
-    color: #aaa8b0;
+    color: #c2a492;
     line-height: 0.9;
 }
 .cover-top-left  { text-align: left; }
@@ -125,11 +125,11 @@ button {
 }
 .cover-img-wrap::before {
     top: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 56' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L390,0 L390,36 C340,44 290,50 240,46 C190,42 150,38 100,42 C60,46 28,52 0,48 Z' fill='%23f5f4f9'/%3E%3C/svg%3E") no-repeat top center / 100% 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 56' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L390,0 L390,36 C340,44 290,50 240,46 C190,42 150,38 100,42 C60,46 28,52 0,48 Z' fill='%23f9f6f1'/%3E%3C/svg%3E") no-repeat top center / 100% 100%;
 }
 .cover-img-wrap::after {
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 56' preserveAspectRatio='none'%3E%3Cpath d='M0,56 L390,56 L390,20 C362,16 330,10 290,14 C240,18 190,24 140,18 C90,12 44,8 0,14 Z' fill='%23f5f4f9'/%3E%3C/svg%3E") no-repeat bottom center / 100% 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 56' preserveAspectRatio='none'%3E%3Cpath d='M0,56 L390,56 L390,20 C362,16 330,10 290,14 C240,18 190,24 140,18 C90,12 44,8 0,14 Z' fill='%23f9f6f1'/%3E%3C/svg%3E") no-repeat bottom center / 100% 100%;
 }
 .cover-img {
     width: 100%;
@@ -158,7 +158,7 @@ button {
 .cover-pre {
     font-family: 'Great Vibes', cursive;
     font-size: 2.4rem;
-    color: #8a86a8;
+    color: #c2a492;
     margin-bottom: 10px;
     line-height: 1.2;
 }
@@ -181,13 +181,13 @@ button {
     font-style: italic;
     font-size: 1.1rem;
     font-weight: 300;
-    color: #9a9aa8;
+    color: #a8826e;
     letter-spacing: 0.06em;
 }
 
 /* ====== INVITE ====== */
 .invite-section {
-    background-image: var(--texture), linear-gradient(160deg, #f5f5f8 0%, #eef1f7 100%);
+    background-image: var(--texture), linear-gradient(160deg, #f9f6f1 0%, #f4ede3 100%);
 }
 .ornament {
     font-size: 1rem;
@@ -213,7 +213,7 @@ button {
     margin-bottom: 0;
 }
 .family-section {
-    background-image: var(--texture), linear-gradient(160deg, #eef1f7 0%, #ede9f5 100%);
+    background-image: var(--texture), linear-gradient(160deg, #f4ede3 0%, #f0e6dc 100%);
 }
 .contact-toggle-btn {
     margin-top: 28px;
@@ -393,8 +393,8 @@ button {
 
 /* ====== DATE & CALENDAR ====== */
 .date-section {
-    background: linear-gradient(160deg, #e8e5f3 0%, #eaf0f6 60%, #e4e0ee 100%);
-    background-image: var(--texture), linear-gradient(160deg, #e8e5f3 0%, #eaf0f6 60%, #e4e0ee 100%);
+    background: linear-gradient(160deg, #f0e6dc 0%, #f4ede3 60%, #ece3d8 100%);
+    background-image: var(--texture), linear-gradient(160deg, #f0e6dc 0%, #f4ede3 60%, #ece3d8 100%);
 }
 .date-main {
     font-family: 'Gowun Dodum', sans-serif;
@@ -479,7 +479,7 @@ button {
 .cal-cell.sun { color: var(--rose); }
 .cal-cell.sat { color: #6b9ed2; }
 .cal-cell.wedding-day {
-    background: linear-gradient(135deg, #7a8aaa 0%, #9a86aa 100%);
+    background: linear-gradient(135deg, #9a7a68 0%, #c49080 100%);
     color: var(--white) !important;
     font-weight: 400;
     font-size: 0.82rem;
@@ -496,7 +496,7 @@ button {
 
 /* ====== GALLERY ====== */
 .gallery-section {
-    background-image: var(--texture), linear-gradient(160deg, #ede9f5 0%, #eef1f7 100%);
+    background-image: var(--texture), linear-gradient(160deg, #f0e6dc 0%, #f4ede3 100%);
     padding-bottom: 48px;
 }
 .gallery-grid {
@@ -615,7 +615,7 @@ button {
 
 /* ====== VENUE ====== */
 .venue-section {
-    background-image: var(--texture), linear-gradient(160deg, #eef1f7 0%, #e8e5f3 100%);
+    background-image: var(--texture), linear-gradient(160deg, #f4ede3 0%, #f0e6dc 100%);
 }
 .welcome-card {
     margin-top: 48px;
@@ -919,7 +919,7 @@ button {
 
 /* ====== ACCOUNTS ====== */
 .account-section {
-    background-image: var(--texture), linear-gradient(160deg, #ede9f5 0%, #eef1f7 100%);
+    background-image: var(--texture), linear-gradient(160deg, #f0e6dc 0%, #f4ede3 100%);
 }
 .account-desc {
     font-size: 0.88rem;
@@ -947,8 +947,8 @@ button {
     cursor: pointer;
     background: none;
 }
-.acc-toggle-groom { border-left: 3px solid #7a8aaa; color: #6a82aa; }
-.acc-toggle-bride  { border-left: 3px solid #aa9cbc; color: #a87aaa; }
+.acc-toggle-groom { border-left: 3px solid #8a7060; color: #8a7060; }
+.acc-toggle-bride  { border-left: 3px solid #c49080; color: #c49080; }
 .acc-contact {
     display: flex;
     flex-direction: column;
@@ -965,14 +965,14 @@ button {
     transition: opacity 0.2s;
 }
 .acc-phone.groom {
-    background: rgba(122, 138, 170, 0.1);
-    color: #7a8aaa;
-    border: 1px solid rgba(122, 138, 170, 0.3);
+    background: rgba(138, 112, 96, 0.1);
+    color: #8a7060;
+    border: 1px solid rgba(138, 112, 96, 0.3);
 }
 .acc-phone.bride {
-    background: rgba(170, 156, 188, 0.1);
-    color: #aa9cbc;
-    border: 1px solid rgba(170, 156, 188, 0.3);
+    background: rgba(196, 144, 128, 0.1);
+    color: #c49080;
+    border: 1px solid rgba(196, 144, 128, 0.3);
 }
 .acc-phone:active { opacity: 0.7; }
 .acc-arrow {
@@ -1077,7 +1077,7 @@ button {
 
 /* ====== GUESTBOOK ====== */
 .guestbook-section {
-    background-image: var(--texture), linear-gradient(160deg, #f5f5f8 0%, #ede9f5 100%);
+    background-image: var(--texture), linear-gradient(160deg, #f9f6f1 0%, #f0e6dc 100%);
 }
 .guestbook-desc {
     font-size: 0.88rem;
@@ -1209,7 +1209,7 @@ button {
     background: var(--bg-alt);
 }
 .gb-action-btn.del {
-    border-color: #e8b4b6;
+    border-color: #e8c4b0;
     color: var(--rose);
 }
 /* ====== 방명록 모달 ====== */
