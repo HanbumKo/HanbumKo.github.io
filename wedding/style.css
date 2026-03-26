@@ -201,12 +201,13 @@ button {
     font-size: 1rem;
     line-height: 2;
     color: var(--brown-mid);
-    margin-bottom: 28px;
+    margin-bottom: 48px;
 }
 .invite-poem-en {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1.05rem;
+    font-size: 1.15rem;
+    font-weight: 600;
     line-height: 1.9;
     color: var(--brown-light);
     margin-bottom: 0;
