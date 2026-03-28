@@ -33,8 +33,8 @@ const GALLERY_IMAGES = [
     /* ── 아래는 '더보기' 클릭 시 표시 ── */
     'images/gallery/7.jpg',
     'images/gallery/8.jpg',
-    'images/gallery/9.jpg',
-    'images/gallery/10.jpg',
+    // 'images/gallery/9.jpg',
+    // 'images/gallery/10.jpg',
     'images/gallery/11.jpg',
     'images/gallery/12.jpg',
     'images/gallery/13.jpg',
@@ -51,8 +51,8 @@ const GALLERY_IMAGES = [
     'images/gallery/24.jpg',
     'images/gallery/25.jpg',
     'images/gallery/26.jpg',
-    'images/gallery/27.jpg',
-    'images/gallery/28.jpg',
+    // 'images/gallery/27.jpg',
+    // 'images/gallery/28.jpg',
     'images/gallery/29.jpg',
 ];
 const GALLERY_INITIAL = 6;
