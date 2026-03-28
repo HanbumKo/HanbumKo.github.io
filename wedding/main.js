@@ -24,36 +24,36 @@ const VENUE = {
    - 사진 파일은 images/gallery/ 폴더에 있습니다
    ============================================================ */
 const GALLERY_IMAGES = [
-    'images/gallery/1.jpg',
-    'images/gallery/2.jpg',
-    'images/gallery/3.jpg',
-    'images/gallery/4.jpg',
-    'images/gallery/5.jpg',
-    'images/gallery/6.jpg',
+    'images/gallery/1.webp',
+    'images/gallery/2.webp',
+    'images/gallery/3.webp',
+    'images/gallery/4.webp',
+    'images/gallery/5.webp',
+    'images/gallery/6.webp',
     /* ── 아래는 '더보기' 클릭 시 표시 ── */
-    'images/gallery/7.jpg',
-    'images/gallery/8.jpg',
-    // 'images/gallery/9.jpg',
-    // 'images/gallery/10.jpg',
-    'images/gallery/11.jpg',
-    'images/gallery/12.jpg',
-    'images/gallery/13.jpg',
-    'images/gallery/14.jpg',
-    'images/gallery/15.jpg',
-    'images/gallery/16.jpg',
-    'images/gallery/17.jpg',
-    'images/gallery/18.jpg',
-    'images/gallery/19.jpg',
-    'images/gallery/20.jpg',
-    'images/gallery/21.jpg',
-    'images/gallery/22.jpg',
-    'images/gallery/23.jpg',
-    'images/gallery/24.jpg',
-    'images/gallery/25.jpg',
-    'images/gallery/26.jpg',
-    // 'images/gallery/27.jpg',
-    // 'images/gallery/28.jpg',
-    'images/gallery/29.jpg',
+    'images/gallery/7.webp',
+    'images/gallery/8.webp',
+    // 'images/gallery/9.webp',
+    // 'images/gallery/10.webp',
+    'images/gallery/11.webp',
+    'images/gallery/12.webp',
+    'images/gallery/13.webp',
+    'images/gallery/14.webp',
+    'images/gallery/15.webp',
+    'images/gallery/16.webp',
+    'images/gallery/17.webp',
+    'images/gallery/18.webp',
+    'images/gallery/19.webp',
+    'images/gallery/20.webp',
+    'images/gallery/21.webp',
+    'images/gallery/22.webp',
+    'images/gallery/23.webp',
+    'images/gallery/24.webp',
+    'images/gallery/25.webp',
+    'images/gallery/26.webp',
+    // 'images/gallery/27.webp',
+    // 'images/gallery/28.webp',
+    'images/gallery/29.webp',
 ];
 const GALLERY_INITIAL = 6;
 let galleryExpanded = false;
@@ -115,7 +115,7 @@ function renderGallery(count) {
         const img = document.createElement('img');
         img.src = src;
         img.alt = `웨딩 사진 ${i + 1}`;
-        img.loading = 'lazy';
+        img.loading = i < GALLERY_INITIAL ? 'eager' : 'lazy';
         div.appendChild(img);
         div.addEventListener('click', () => openLightbox(i));
         grid.appendChild(div);
@@ -160,21 +160,18 @@ function lightboxPrev(e) {
 
 function lightboxNext(e) {
     if (e) e.stopPropagation();
-    const total = galleryExpanded ? GALLERY_IMAGES.length : GALLERY_INITIAL;
-    if (currentIdx < total - 1) openLightbox(currentIdx + 1);
+    if (currentIdx < GALLERY_IMAGES.length - 1) openLightbox(currentIdx + 1);
 }
 
 function updateLbCounter() {
-    const total = galleryExpanded ? GALLERY_IMAGES.length : GALLERY_INITIAL;
-    document.getElementById('lb-counter').textContent = `${currentIdx + 1} / ${total}`;
+    document.getElementById('lb-counter').textContent = `${currentIdx + 1} / ${GALLERY_IMAGES.length}`;
 }
 
 function updateLbNav() {
-    const total = galleryExpanded ? GALLERY_IMAGES.length : GALLERY_INITIAL;
     const prev = document.querySelector('.lb-prev');
     const next = document.querySelector('.lb-next');
     prev.dataset.disabled = currentIdx === 0 ? 'true' : 'false';
-    next.dataset.disabled = currentIdx >= total - 1 ? 'true' : 'false';
+    next.dataset.disabled = currentIdx >= GALLERY_IMAGES.length - 1 ? 'true' : 'false';
 }
 
 /* 키보드 탐색 */
