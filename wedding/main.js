@@ -24,31 +24,44 @@ const VENUE = {
    - 사진 파일은 images/gallery/ 폴더에 있습니다
    ============================================================ */
 const GALLERY_IMAGES = [
-    'images/gallery/19.jpg', // 19
-    'images/gallery/20.jpg', // 20
-    'images/gallery/21.jpg', // 21
-    'images/gallery/22.jpg', // 22
-    'images/gallery/23.jpg', // 23
-    'images/gallery/24.jpg', // 24  ← 여기까지 처음 표시
+    'images/gallery/1.jpg',
+    'images/gallery/2.jpg',
+    'images/gallery/3.jpg',
+    // 'images/gallery/4.jpg',
+    'images/gallery/5.jpg',
+    'images/gallery/6.jpg',
     /* ── 아래는 '더보기' 클릭 시 표시 ── */
-    'images/gallery/1.jpg',  // 1
-    'images/gallery/2.jpg',  // 2
-    'images/gallery/3.jpg',  // 3
-    'images/gallery/4.jpg',  // 4
-    'images/gallery/5.jpg',  // 5
-    'images/gallery/6.jpg',  // 6
-    'images/gallery/7.jpg',  // 7
-    'images/gallery/8.jpg',  // 8
-    'images/gallery/9.jpg',  // 9
-    // 'images/gallery/10.jpg', // 10
-    'images/gallery/11.jpg', // 11
-    'images/gallery/12.jpg', // 12
-    'images/gallery/13.jpg', // 13
-    'images/gallery/14.jpg', // 14
-    'images/gallery/15.jpg', // 15
-    'images/gallery/16.jpg', // 16
-    'images/gallery/17.jpg', // 17
-    'images/gallery/18.jpg', // 18
+    'images/gallery/34.jpg',
+    'images/gallery/33.jpg',
+    'images/gallery/26.jpg',
+    'images/gallery/27.jpg',
+    'images/gallery/37.jpg',
+    'images/gallery/7.jpg',
+    'images/gallery/8.jpg',
+    'images/gallery/9.jpg',
+    'images/gallery/10.jpg',
+    'images/gallery/11.jpg',
+    'images/gallery/12.jpg',
+    'images/gallery/13.jpg',
+    'images/gallery/14.jpg',
+    'images/gallery/15.jpg',
+    'images/gallery/16.jpg',
+    'images/gallery/17.jpg',
+    'images/gallery/18.jpg',
+    'images/gallery/19.jpg',
+    'images/gallery/20.jpg',
+    'images/gallery/21.jpg',
+    'images/gallery/22.jpg',
+    'images/gallery/23.jpg',
+    'images/gallery/24.jpg',
+    'images/gallery/25.jpg',
+    'images/gallery/28.jpg',
+    'images/gallery/29.jpg',
+    'images/gallery/30.jpg',
+    'images/gallery/31.jpg',
+    'images/gallery/32.jpg',
+    // 'images/gallery/35.jpg',
+    // 'images/gallery/36.jpg',
 ];
 const GALLERY_INITIAL = 6;
 let galleryExpanded = false;
