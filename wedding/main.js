@@ -27,15 +27,10 @@ const GALLERY_IMAGES = [
     'images/gallery/1.jpg',
     'images/gallery/2.jpg',
     'images/gallery/3.jpg',
-    // 'images/gallery/4.jpg',
+    'images/gallery/4.jpg',
     'images/gallery/5.jpg',
     'images/gallery/6.jpg',
     /* ── 아래는 '더보기' 클릭 시 표시 ── */
-    'images/gallery/34.jpg',
-    'images/gallery/33.jpg',
-    'images/gallery/26.jpg',
-    'images/gallery/27.jpg',
-    'images/gallery/37.jpg',
     'images/gallery/7.jpg',
     'images/gallery/8.jpg',
     'images/gallery/9.jpg',
@@ -55,13 +50,10 @@ const GALLERY_IMAGES = [
     'images/gallery/23.jpg',
     'images/gallery/24.jpg',
     'images/gallery/25.jpg',
+    'images/gallery/26.jpg',
+    'images/gallery/27.jpg',
     'images/gallery/28.jpg',
     'images/gallery/29.jpg',
-    'images/gallery/30.jpg',
-    'images/gallery/31.jpg',
-    'images/gallery/32.jpg',
-    // 'images/gallery/35.jpg',
-    // 'images/gallery/36.jpg',
 ];
 const GALLERY_INITIAL = 6;
 let galleryExpanded = false;
