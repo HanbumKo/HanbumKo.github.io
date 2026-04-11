@@ -19,43 +19,50 @@ const VENUE = {
 };
 
 /* ====== 갤러리 이미지 목록 ======
-   - 처음 6장: 페이지 로드 시 바로 표시
-   - 나머지 18장: '더보기' 버튼 클릭 시 표시
-   - 사진 파일은 images/gallery/ 폴더에 있습니다
+   - 처음 9장: 페이지 로드 시 바로 표시
+   - 나머지: '더보기' 버튼 클릭 시 표시
+   - 사진 파일은 images/gallery/opt/ 폴더에 있습니다
+   - 순서: 슬림(12장) → 찐핑크(11장) → 풍성(8장)
    ============================================================ */
 const GALLERY_IMAGES = [
-    'images/gallery/1.webp',
-    'images/gallery/2.webp',
-    'images/gallery/3.webp',
-    'images/gallery/4.webp',
-    'images/gallery/5.webp',
-    'images/gallery/6.webp',
+    /* ── 슬림 ── */
+    'images/gallery/opt/slim_01.webp',
+    'images/gallery/opt/slim_02.webp',
+    'images/gallery/opt/slim_03.webp',
+    'images/gallery/opt/slim_04.webp',
+    'images/gallery/opt/slim_05.webp',
+    'images/gallery/opt/slim_06.webp',
+    'images/gallery/opt/slim_07.webp',
+    'images/gallery/opt/slim_08.webp',
+    'images/gallery/opt/slim_09.webp',
     /* ── 아래는 '더보기' 클릭 시 표시 ── */
-    'images/gallery/7.webp',
-    'images/gallery/8.webp',
-    // 'images/gallery/9.webp',
-    // 'images/gallery/10.webp',
-    'images/gallery/11.webp',
-    'images/gallery/12.webp',
-    'images/gallery/13.webp',
-    'images/gallery/14.webp',
-    'images/gallery/15.webp',
-    'images/gallery/16.webp',
-    'images/gallery/17.webp',
-    'images/gallery/18.webp',
-    'images/gallery/19.webp',
-    'images/gallery/20.webp',
-    'images/gallery/21.webp',
-    'images/gallery/22.webp',
-    'images/gallery/23.webp',
-    'images/gallery/24.webp',
-    'images/gallery/25.webp',
-    'images/gallery/26.webp',
-    // 'images/gallery/27.webp',
-    // 'images/gallery/28.webp',
-    'images/gallery/29.webp',
+    'images/gallery/opt/slim_10.webp',
+    'images/gallery/opt/slim_11.webp',
+    'images/gallery/opt/slim_12.webp',
+    /* ── 찐핑크 ── */
+    'images/gallery/opt/pink_01.webp',
+    'images/gallery/opt/pink_02.webp',
+    'images/gallery/opt/pink_03.webp',
+    'images/gallery/opt/pink_04.webp',
+    'images/gallery/opt/pink_05.webp',
+    'images/gallery/opt/pink_06.webp',
+    'images/gallery/opt/pink_07.webp',
+    'images/gallery/opt/pink_08.webp',
+    'images/gallery/opt/pink_09.webp',
+    'images/gallery/opt/pink_10.webp',
+    'images/gallery/opt/pink_11.webp',
+    /* ── 풍성 ── */
+    'images/gallery/opt/full_01.webp',
+    'images/gallery/opt/full_02.webp',
+    'images/gallery/opt/full_03.webp',
+    'images/gallery/opt/full_04.webp',
+    'images/gallery/opt/full_05.webp',
+    'images/gallery/opt/full_06.webp',
+    'images/gallery/opt/full_07.webp',
+    'images/gallery/opt/full_08.webp',
+    'images/gallery/opt/full_09.webp',
 ];
-const GALLERY_INITIAL = 6;
+const GALLERY_INITIAL = 9;
 let galleryExpanded = false;
 
 /* ====== D-DAY 계산 ====== */
@@ -146,6 +153,13 @@ function openLightbox(idx) {
     document.body.style.overflow = 'hidden';
     updateLbCounter();
     updateLbNav();
+    /* 앞뒤 이미지 미리 로드 */
+    [idx - 1, idx + 1].forEach(i => {
+        if (i >= 0 && i < GALLERY_IMAGES.length) {
+            const pre = new Image();
+            pre.src = GALLERY_IMAGES[i];
+        }
+    });
 }
 
 function closeLightbox() {
