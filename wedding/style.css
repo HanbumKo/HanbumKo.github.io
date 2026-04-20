@@ -472,6 +472,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 .lb-content img {
     width: auto;

@@ -22,23 +22,9 @@ const VENUE = {
    - 처음 9장: 페이지 로드 시 바로 표시
    - 나머지: '더보기' 버튼 클릭 시 표시
    - 사진 파일은 images/gallery/opt/ 폴더에 있습니다
-   - 순서: 슬림(12장) → 찐핑크(11장) → 풍성(8장)
+   - 순서: 찐핑크(12장) → 풍성(10장) → 슬림(14장)
    ============================================================ */
 const GALLERY_IMAGES = [
-    /* ── 슬림 ── */
-    'images/gallery/opt/slim_01.webp',
-    'images/gallery/opt/slim_02.webp',
-    'images/gallery/opt/slim_03.webp',
-    'images/gallery/opt/slim_04.webp',
-    'images/gallery/opt/slim_05.webp',
-    'images/gallery/opt/slim_06.webp',
-    'images/gallery/opt/slim_07.webp',
-    'images/gallery/opt/slim_08.webp',
-    'images/gallery/opt/slim_09.webp',
-    /* ── 아래는 '더보기' 클릭 시 표시 ── */
-    'images/gallery/opt/slim_10.webp',
-    'images/gallery/opt/slim_11.webp',
-    'images/gallery/opt/slim_12.webp',
     /* ── 찐핑크 ── */
     'images/gallery/opt/pink_01.webp',
     'images/gallery/opt/pink_02.webp',
@@ -49,8 +35,10 @@ const GALLERY_IMAGES = [
     'images/gallery/opt/pink_07.webp',
     'images/gallery/opt/pink_08.webp',
     'images/gallery/opt/pink_09.webp',
+    /* ── 아래는 '더보기' 클릭 시 표시 ── */
     'images/gallery/opt/pink_10.webp',
     'images/gallery/opt/pink_11.webp',
+    'images/gallery/opt/pink_12.webp',
     /* ── 풍성 ── */
     'images/gallery/opt/full_01.webp',
     'images/gallery/opt/full_02.webp',
@@ -61,6 +49,22 @@ const GALLERY_IMAGES = [
     'images/gallery/opt/full_07.webp',
     'images/gallery/opt/full_08.webp',
     'images/gallery/opt/full_09.webp',
+    'images/gallery/opt/full_10.webp',
+    /* ── 슬림 ── */
+    'images/gallery/opt/slim_01.webp',
+    'images/gallery/opt/slim_02.webp',
+    'images/gallery/opt/slim_03.webp',
+    'images/gallery/opt/slim_04.webp',
+    'images/gallery/opt/slim_05.webp',
+    'images/gallery/opt/slim_06.webp',
+    'images/gallery/opt/slim_07.webp',
+    'images/gallery/opt/slim_08.webp',
+    'images/gallery/opt/slim_09.webp',
+    'images/gallery/opt/slim_10.webp',
+    'images/gallery/opt/slim_11.webp',
+    'images/gallery/opt/slim_12.webp',
+    'images/gallery/opt/slim_13.webp',
+    'images/gallery/opt/slim_14.webp',
 ];
 const GALLERY_INITIAL = 9;
 let galleryExpanded = false;
@@ -167,14 +171,63 @@ function closeLightbox() {
     document.body.style.overflow = '';
 }
 
+let lbAnimating = false;
+
+function slideLightbox(dir, startOffsetPx) {
+    /* dir: +1 = next, -1 = prev
+       startOffsetPx: current image's drag offset in px (0 for button/keyboard nav) */
+    if (lbAnimating) return;
+    const newIdx = currentIdx + dir;
+    if (newIdx < 0 || newIdx >= GALLERY_IMAGES.length) return;
+
+    lbAnimating = true;
+    const EASE = 'cubic-bezier(0.25,0.46,0.45,0.94)';
+    const MS   = 320;
+    const W    = window.innerWidth;
+
+    const curImg = document.getElementById('lb-img');
+    const content = document.querySelector('.lb-content');
+
+    /* 새 이미지 요소 생성 — 화면 밖에서 시작 */
+    const nxt = document.createElement('img');
+    nxt.src = GALLERY_IMAGES[newIdx];
+    nxt.style.cssText = `position:absolute;max-width:92vw;max-height:84vh;
+        object-fit:contain;border-radius:4px;user-select:none;pointer-events:none;
+        z-index:1;transition:none;
+        transform:translateX(${dir > 0 ? W - startOffsetPx : -W - startOffsetPx}px)`;
+    content.appendChild(nxt);
+
+    nxt.offsetHeight; /* reflow */
+
+    /* 두 이미지를 동시에 슬라이드 */
+    curImg.style.transition = `transform ${MS}ms ${EASE}`;
+    curImg.style.transform  = `translateX(${dir > 0 ? -W : W}px)`;
+    nxt.style.transition    = `transform ${MS}ms ${EASE}`;
+    nxt.style.transform     = 'translateX(0)';
+
+    setTimeout(() => {
+        currentIdx = newIdx;
+        curImg.src = GALLERY_IMAGES[newIdx];
+        curImg.style.transition = 'none';
+        curImg.style.transform  = 'translateX(0)';
+        content.removeChild(nxt);
+        updateLbCounter();
+        updateLbNav();
+        [newIdx - 1, newIdx + 1].forEach(i => {
+            if (i >= 0 && i < GALLERY_IMAGES.length) new Image().src = GALLERY_IMAGES[i];
+        });
+        lbAnimating = false;
+    }, MS);
+}
+
 function lightboxPrev(e) {
     if (e) e.stopPropagation();
-    if (currentIdx > 0) openLightbox(currentIdx - 1);
+    slideLightbox(-1, 0);
 }
 
 function lightboxNext(e) {
     if (e) e.stopPropagation();
-    if (currentIdx < GALLERY_IMAGES.length - 1) openLightbox(currentIdx + 1);
+    slideLightbox(1, 0);
 }
 
 function updateLbCounter() {
@@ -198,19 +251,99 @@ document.addEventListener('keydown', e => {
 
 /* 터치 스와이프 */
 (function addSwipe() {
-    const lb = document.getElementById('lightbox');
-    let startX = 0, startY = 0;
+    const lb      = document.getElementById('lightbox');
+    const content = document.querySelector('.lb-content');
+    let curImg, peekImg;
+    let startX = 0, startY = 0, dragX = 0, dragging = false, peekDir = 0;
+
     lb.addEventListener('touchstart', e => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
+        if (lbAnimating) return;
+        curImg  = document.getElementById('lb-img');
+        startX  = e.touches[0].clientX;
+        startY  = e.touches[0].clientY;
+        dragX   = 0; dragging = false; peekDir = 0;
+        curImg.style.transition = 'none';
     }, { passive: true });
-    lb.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - startX;
-        const dy = e.changedTouches[0].clientY - startY;
-        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-            if (dx < 0) lightboxNext();
-            else lightboxPrev();
+
+    lb.addEventListener('touchmove', e => {
+        if (lbAnimating) return;
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+        if (!dragging) {
+            if (Math.abs(dy) > Math.abs(dx)) return;
+            dragging = true;
         }
+        dragX = dx;
+        const dir = dx < 0 ? 1 : -1;
+
+        /* 방향이 바뀌면 미리보기 이미지 교체 */
+        if (dir !== peekDir) {
+            if (peekImg) { content.removeChild(peekImg); peekImg = null; }
+            const nextIdx = currentIdx + dir;
+            if (nextIdx >= 0 && nextIdx < GALLERY_IMAGES.length) {
+                peekImg = document.createElement('img');
+                peekImg.src = GALLERY_IMAGES[nextIdx];
+                peekImg.style.cssText = `position:absolute;max-width:92vw;max-height:84vh;
+                    object-fit:contain;border-radius:4px;user-select:none;pointer-events:none;
+                    z-index:0;transition:none;`;
+                content.appendChild(peekImg);
+                peekDir = dir;
+            }
+        }
+
+        const W = window.innerWidth;
+        curImg.style.transform = `translateX(${dx}px)`;
+        if (peekImg) peekImg.style.transform = `translateX(${dx + (dir > 0 ? W : -W)}px)`;
+    }, { passive: true });
+
+    lb.addEventListener('touchend', () => {
+        if (!dragging) return;
+        dragging = false;
+
+        const threshold = window.innerWidth * 0.25;
+        const dir = dragX < 0 ? 1 : -1;
+        const nextIdx = currentIdx + dir;
+
+        if (Math.abs(dragX) > threshold && nextIdx >= 0 && nextIdx < GALLERY_IMAGES.length) {
+            /* 손 뗀 위치에서 이어서 슬라이드 완성 */
+            const EASE = 'cubic-bezier(0.25,0.46,0.45,0.94)';
+            const W    = window.innerWidth;
+            const remaining = W - Math.abs(dragX);
+            const MS   = Math.max(120, Math.round(remaining / W * 320));
+
+            lbAnimating = true;
+            curImg.style.transition = `transform ${MS}ms ${EASE}`;
+            curImg.style.transform  = `translateX(${dir > 0 ? -W : W}px)`;
+            if (peekImg) {
+                peekImg.style.transition = `transform ${MS}ms ${EASE}`;
+                peekImg.style.transform  = 'translateX(0)';
+            }
+
+            setTimeout(() => {
+                currentIdx = nextIdx;
+                curImg.src = GALLERY_IMAGES[nextIdx];
+                curImg.style.transition = 'none';
+                curImg.style.transform  = 'translateX(0)';
+                if (peekImg) { content.removeChild(peekImg); peekImg = null; }
+                updateLbCounter();
+                updateLbNav();
+                [nextIdx - 1, nextIdx + 1].forEach(i => {
+                    if (i >= 0 && i < GALLERY_IMAGES.length) new Image().src = GALLERY_IMAGES[i];
+                });
+                lbAnimating = false;
+            }, MS);
+        } else {
+            /* 임계값 미달 — 제자리 복귀 */
+            curImg.style.transition = 'transform 0.25s ease';
+            curImg.style.transform  = 'translateX(0)';
+            if (peekImg) {
+                const W = window.innerWidth;
+                peekImg.style.transition = 'transform 0.25s ease';
+                peekImg.style.transform  = `translateX(${peekDir > 0 ? W : -W}px)`;
+                setTimeout(() => { if (peekImg) { content.removeChild(peekImg); peekImg = null; } }, 250);
+            }
+        }
+        peekDir = 0;
     }, { passive: true });
 })();
 
