@@ -95,10 +95,7 @@
         <h2 class="section-heading">예 식 안 내</h2>
         <p class="date-main">2026년 6월 27일 토요일 오후 3시</p>
         <p class="date-venue">소노펠리체 컨벤션 단독홀</p>
-        <div class="dday-box">
-            <span class="dday-num" id="dday-num">??</span>
-            <span class="dday-label" id="dday-label">days to go</span>
-        </div>
+
         <div class="calendar">
             <div class="cal-month">2026년 6월</div>
             <div class="cal-week-labels">
@@ -113,7 +110,7 @@
     <section class="section gallery-section reveal">
         <h2 class="section-heading">갤 러 리</h2>
         <div class="gallery-grid" id="gallery-grid"></div>
-        <button class="gallery-more-btn" id="gallery-more-btn" onclick="toggleGallery()">View More &nbsp;▾</button>
+        <button class="gallery-more-btn" id="gallery-more-btn" onclick="toggleGallery()">더보기 &nbsp;▾</button>
     </section>
 
     <!-- ====== 라이트박스 ====== -->
@@ -190,6 +187,7 @@
         <div class="dir-tab-wrap">
             <button class="dir-tab-btn active" onclick="switchDir('subway', this)">지하철</button>
             <button class="dir-tab-btn" onclick="switchDir('bus', this)">버스</button>
+            <button class="dir-tab-btn" onclick="switchDir('car', this)">자가용</button>
         </div>
 
         <div class="dir-panel active" id="dir-subway">
@@ -197,6 +195,7 @@
                 <p class="dir-item-label"><span class="dir-line dir-line-2">2</span> 삼성역 5번 출구</p>
                 <p class="dir-text">5번 출구에서 직진 후 현대백화점 코너 우측 방향 약 150m 지점 도심공항터미널 3층 (약 7분)</p>
                 <p class="dir-note">지하 코엑스몰 이동보다는 지상으로 찾아오시면 편리합니다.</p>
+                <p class="dir-note">코엑스몰 이동시 별마당 도서관 인근 까사미아 매장 옆 엘레베이터 이용</p>
             </div>
             <div class="dir-item">
                 <p class="dir-item-label"><span class="dir-line dir-line-9">9</span> 봉은사역 7번 출구</p>
@@ -230,6 +229,13 @@
                 <div class="dir-bus-group">
                     <span class="dir-bus-type">공항</span><span class="dir-bus-nums">6000 · 6704</span>
                 </div>
+            </div>
+        </div>
+
+        <div class="dir-panel" id="dir-car">
+            <div class="dir-item">
+                <p class="dir-item-label">🅿 주차 안내</p>
+                <p class="dir-text">도심공항터미널 주차장 이용</p>
             </div>
         </div>
 
@@ -331,12 +337,11 @@
         <h2 class="section-heading">방 명 록</h2>
         <p class="guestbook-desc">따뜻한 축하의 말씀을 남겨주세요.<br><span class="guestbook-desc-en">Leave a heartfelt message for the couple.</span></p>
         <form class="gb-form" onsubmit="submitGuestbook(event)">
-            <input class="gb-input" type="text" id="gb-name" placeholder="이름" maxlength="20" required>
-            <textarea class="gb-textarea" id="gb-msg" placeholder="축하 메시지를 입력하세요" maxlength="200" rows="3" required></textarea>
+            <input class="gb-input" type="text" id="gb-name" placeholder="이름 / Name" maxlength="20" required>
+            <textarea class="gb-textarea" id="gb-msg" placeholder="축하 메시지를 입력하세요 / Leave a message" maxlength="200" rows="3" required></textarea>
             <button class="gb-submit" type="submit">Leave a Message</button>
         </form>
-        <button class="gb-list-toggle" id="gb-list-toggle" onclick="toggleGbList()">View Messages &nbsp;▾</button>
-        <div class="gb-list hidden" id="gb-list"></div>
+        <div class="gb-list" id="gb-list"></div>
     </section>
 
 

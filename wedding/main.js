@@ -69,28 +69,6 @@ const GALLERY_IMAGES = [
 const GALLERY_INITIAL = 9;
 let galleryExpanded = false;
 
-/* ====== D-DAY 계산 (KST 기준) ====== */
-(function calcDday() {
-    const wedding = new Date(2026, 5, 27);
-    /* 한국 시간(KST = UTC+9) 기준 오늘 날짜 */
-    const kstStr = new Date().toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' });
-    const [y, m, d] = kstStr.split('.').map(s => parseInt(s.trim()));
-    const today = new Date(y, m - 1, d);
-    const diff = Math.round((wedding - today) / (1000 * 60 * 60 * 24));
-    const numEl = document.getElementById('dday-num');
-    const labelEl = document.getElementById('dday-label');
-    if (!numEl) return;
-    if (diff > 0) {
-        numEl.textContent = diff;
-        if (labelEl) labelEl.textContent = 'days to go';
-    } else if (diff === 0) {
-        numEl.textContent = 'Today';
-        if (labelEl) labelEl.textContent = 'our wedding day';
-    } else {
-        numEl.textContent = Math.abs(diff);
-        if (labelEl) labelEl.textContent = 'days since';
-    }
-})();
 
 /* ====== 달력 생성 (2026년 6월) ====== */
 (function buildCalendar() {
@@ -138,7 +116,7 @@ function renderGallery(count) {
 function toggleGallery() {
     galleryExpanded = !galleryExpanded;
     renderGallery(galleryExpanded ? GALLERY_IMAGES.length : GALLERY_INITIAL);
-    document.getElementById('gallery-more-btn').innerHTML = galleryExpanded ? 'Hide &nbsp;▴' : 'View More &nbsp;▾';
+    document.getElementById('gallery-more-btn').innerHTML = galleryExpanded ? '접기 &nbsp;▴' : '더보기 &nbsp;▾';
 }
 
 /* 초기 갤러리 렌더링 */
@@ -594,13 +572,8 @@ function escapeHtml(str) {
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-function toggleGbList() {
-    const list = document.getElementById('gb-list');
-    const btn = document.getElementById('gb-list-toggle');
-    const isHidden = list.classList.toggle('hidden');
-    btn.innerHTML = isHidden ? 'View Messages &nbsp;▾' : 'Hide &nbsp;▴';
-    if (!isHidden) renderGuestbook();
-}
+/* 페이지 로드 시 방명록 바로 표시 */
+document.addEventListener('DOMContentLoaded', renderGuestbook);
 
 /* ====== 계좌 아코디언 ====== */
 function toggleAcc(btn) {
