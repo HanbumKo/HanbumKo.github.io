@@ -328,13 +328,13 @@ document.addEventListener('keydown', e => {
 })();
 
 /* ====== 배경 음악 ====== */
-let musicPlaying = true;
+let musicPlaying = false;
 
 function setMusicState(playing) {
     musicPlaying = playing;
     const btn   = document.getElementById('music-btn');
-    const play  = document.getElementById('music-icon-play');
-    const pause = document.getElementById('music-icon-pause');
+    const play  = document.getElementById('music-label-play');
+    const pause = document.getElementById('music-label-pause');
     if (playing) {
         btn.classList.add('playing');
         play.classList.add('hidden');
@@ -370,15 +370,7 @@ function toggleMusic() {
     }
 }
 
-/* 페이지 로드 시 자동재생 시도 (브라우저 정책상 사용자 인터랙션 전엔 막힐 수 있음) */
-document.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('bgm');
-    setMusicState(true);
-    audio.play().catch(() => {
-        /* 자동재생 차단 시 정지 상태로 */
-        setMusicState(false);
-    });
-});
+document.addEventListener('DOMContentLoaded', () => setMusicState(false));
 
 
 /* ====== 스크롤 reveal ====== */

@@ -1259,15 +1259,13 @@ button {
     position: absolute;
     bottom: 20px;
     right: 16px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.22);
+    height: 36px;
+    padding: 0 14px 0 10px;
+    border-radius: 999px;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    color: var(--white);
-    border: 1px solid rgba(255,255,255,0.4);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    border: 1.5px solid rgba(255,255,255,0.55);
+    box-shadow: 0 2px 14px rgba(0,0,0,0.22);
     z-index: 10;
     display: flex;
     align-items: center;
@@ -1275,19 +1273,44 @@ button {
     transition: transform 0.2s, background 0.2s;
     cursor: pointer;
 }
-.music-btn:active { transform: scale(0.9); }
-.music-btn.playing { background: var(--rose); }
-.music-icon {
-    width: 22px;
-    height: 22px;
+.music-btn:active { transform: scale(0.93); }
+.music-btn:not(.playing) {
+    background: rgba(255,255,255,0.88);
+    color: var(--brown);
+    animation: musicPulse 2.2s ease-in-out infinite;
 }
-.music-icon.hidden { display: none; }
+.music-btn.playing {
+    background: rgba(180,120,100,0.82);
+    color: var(--white);
+    animation: none;
+}
+.music-btn-inner {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.music-btn-inner.hidden { display: none; }
+.music-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+.music-label {
+    font-size: 12px;
+    font-family: var(--font-ko);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+.music-icon-spin {
+    animation: musicSpin 4s linear infinite;
+}
+@keyframes musicPulse {
+    0%, 100% { box-shadow: 0 2px 14px rgba(0,0,0,0.22), 0 0 0 0 rgba(255,255,255,0.7); }
+    50%       { box-shadow: 0 2px 14px rgba(0,0,0,0.22), 0 0 0 7px rgba(255,255,255,0); }
+}
 @keyframes musicSpin {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
-}
-.music-btn.playing .music-icon {
-    animation: musicSpin 4s linear infinite;
 }
 
 /* ====== DESKTOP ====== */

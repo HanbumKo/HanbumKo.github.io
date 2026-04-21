@@ -28,7 +28,7 @@
 <body>
 
     <!-- ====== 배경 음악 ====== -->
-    <audio id="bgm" loop preload="auto" autoplay>
+    <audio id="bgm" loop preload="auto">
         <source src="audio/wed_invit_song.mp3" type="audio/mpeg">
     </audio>
 
@@ -41,12 +41,14 @@
         <div class="cover-img-wrap">
             <img src="images/cover.webp" alt="고한범 윤수희" class="cover-img">
             <button class="music-btn" id="music-btn" onclick="toggleMusic()" title="배경음악">
-                <svg class="music-icon" id="music-icon-play" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/>
-                </svg>
-                <svg class="music-icon hidden" id="music-icon-pause" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                </svg>
+                <span class="music-btn-inner" id="music-label-play">
+                    <svg class="music-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg>
+                    <span class="music-label">음악 재생</span>
+                </span>
+                <span class="music-btn-inner hidden" id="music-label-pause">
+                    <svg class="music-icon music-icon-spin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg>
+                    <span class="music-label">재생 중</span>
+                </span>
             </button>
         </div>
         <div class="cover-text">
