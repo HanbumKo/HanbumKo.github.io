@@ -82,38 +82,10 @@
             <div class="family-row">
                 <span class="parent-label">고윤열 · 박소은의 아들</span>
                 <span class="person-name">한범</span>
-                <a href="tel:010-6556-8849" class="family-call-btn">📞</a>
             </div>
             <div class="family-row">
                 <span class="parent-label">윤춘호 · 박계숙의 딸</span>
                 <span class="person-name">수희</span>
-                <a href="tel:010-5005-2338" class="family-call-btn">📞</a>
-            </div>
-        </div>
-
-        <button class="contact-toggle-btn" onclick="toggleContact()">
-            혼주에게 연락하기 <span class="contact-toggle-arrow" id="contact-arrow">▾</span>
-        </button>
-        <div class="contact-list hidden" id="contact-list">
-            <div class="contact-row">
-                <span class="contact-row-role">신랑 아버지</span>
-                <span class="contact-row-name">고윤열</span>
-                <a href="tel:010-8727-8848" class="contact-call-btn">📞</a>
-            </div>
-            <div class="contact-row">
-                <span class="contact-row-role">신랑 어머니</span>
-                <span class="contact-row-name">박소은</span>
-                <a href="tel:010-3367-3508" class="contact-call-btn">📞</a>
-            </div>
-            <div class="contact-row">
-                <span class="contact-row-role">신부 아버지</span>
-                <span class="contact-row-name">윤춘호</span>
-                <a href="tel:010-3887-5095" class="contact-call-btn">📞</a>
-            </div>
-            <div class="contact-row">
-                <span class="contact-row-role">신부 어머니</span>
-                <span class="contact-row-name">박계숙</span>
-                <a href="tel:010-9216-2338" class="contact-call-btn">📞</a>
             </div>
         </div>
     </section>
@@ -284,23 +256,32 @@
                 <div class="acc-item">
                     <div class="acc-info">
                         <span class="acc-role">신랑</span><span class="acc-name">고한범</span>
-                        <span class="acc-bank">국민은행 709402-00-266604</span>
+                        <div class="acc-bank-row">
+                            <span class="acc-bank">국민은행 709402-00-266604</span>
+                            <button class="copy-acc-btn" onclick="copyAcct('709402-00-266604', this)">복사</button>
+                        </div>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('709402-00-266604', this)">복사</button>
+                    <a href="tel:010-6556-8849" class="acc-call-btn">📞</a>
                 </div>
                 <div class="acc-item">
                     <div class="acc-info">
                         <span class="acc-role">아버지</span><span class="acc-name">고윤열</span>
-                        <span class="acc-bank">기업은행 364-025140-02-015</span>
+                        <div class="acc-bank-row">
+                            <span class="acc-bank">기업은행 364-025140-02-015</span>
+                            <button class="copy-acc-btn" onclick="copyAcct('364-025140-02-015', this)">복사</button>
+                        </div>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('364-025140-02-015', this)">복사</button>
+                    <a href="tel:010-8727-8848" class="acc-call-btn">📞</a>
                 </div>
                 <div class="acc-item">
                     <div class="acc-info">
                         <span class="acc-role">어머니</span><span class="acc-name">박소은</span>
-                        <span class="acc-bank">농협 453104-52-010481</span>
+                        <div class="acc-bank-row">
+                            <span class="acc-bank">농협 453104-52-010481</span>
+                            <button class="copy-acc-btn" onclick="copyAcct('453104-52-010481', this)">복사</button>
+                        </div>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('453104-52-010481', this)">복사</button>
+                    <a href="tel:010-3367-3508" class="acc-call-btn">📞</a>
                 </div>
             </div>
         </div>
@@ -313,23 +294,32 @@
                 <div class="acc-item">
                     <div class="acc-info">
                         <span class="acc-role">신부</span><span class="acc-name">윤수희</span>
-                        <span class="acc-bank">우리은행 1002-838-813299</span>
+                        <div class="acc-bank-row">
+                            <span class="acc-bank">우리은행 1002-838-813299</span>
+                            <button class="copy-acc-btn" onclick="copyAcct('1002-838-813299', this)">복사</button>
+                        </div>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('1002-838-813299', this)">복사</button>
+                    <a href="tel:010-5005-2338" class="acc-call-btn">📞</a>
                 </div>
                 <div class="acc-item">
                     <div class="acc-info">
                         <span class="acc-role">아버지</span><span class="acc-name">윤춘호</span>
-                        <span class="acc-bank">기업은행 010-3887-5095</span>
+                        <div class="acc-bank-row">
+                            <span class="acc-bank">기업은행 010-3887-5095</span>
+                            <button class="copy-acc-btn" onclick="copyAcct('010-3887-5095', this)">복사</button>
+                        </div>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('010-3887-5095', this)">복사</button>
+                    <a href="tel:010-3887-5095" class="acc-call-btn">📞</a>
                 </div>
                 <div class="acc-item">
                     <div class="acc-info">
                         <span class="acc-role">어머니</span><span class="acc-name">박계숙</span>
-                        <span class="acc-bank">SC제일은행 173-20-04-7943</span>
+                        <div class="acc-bank-row">
+                            <span class="acc-bank">SC제일은행 173-20-04-7943</span>
+                            <button class="copy-acc-btn" onclick="copyAcct('173-20-04-7943', this)">복사</button>
+                        </div>
                     </div>
-                    <button class="copy-acc-btn" onclick="copyAcct('173-20-04-7943', this)">복사</button>
+                    <a href="tel:010-9216-2338" class="acc-call-btn">📞</a>
                 </div>
             </div>
         </div>

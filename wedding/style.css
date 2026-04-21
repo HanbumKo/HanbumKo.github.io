@@ -931,11 +931,22 @@ button {
     font-family: monospace;
     letter-spacing: 0.03em;
 }
+.acc-bank-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.acc-call-btn {
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 4px;
+    flex-shrink: 0;
+}
 .copy-acc-btn {
-    padding: 7px 16px;
+    padding: 4px 10px;
     border: 1.5px solid var(--border);
     border-radius: 50px;
-    font-size: 0.78rem;
+    font-size: 0.68rem;
     color: var(--brown-mid);
     flex-shrink: 0;
     transition: all 0.2s;
