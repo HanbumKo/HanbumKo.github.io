@@ -69,12 +69,14 @@ const GALLERY_IMAGES = [
 const GALLERY_INITIAL = 9;
 let galleryExpanded = false;
 
-/* ====== D-DAY 계산 ====== */
+/* ====== D-DAY 계산 (KST 기준) ====== */
 (function calcDday() {
     const wedding = new Date(2026, 5, 27);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const diff = Math.ceil((wedding - today) / (1000 * 60 * 60 * 24));
+    /* 한국 시간(KST = UTC+9) 기준 오늘 날짜 */
+    const kstStr = new Date().toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' });
+    const [y, m, d] = kstStr.split('.').map(s => parseInt(s.trim()));
+    const today = new Date(y, m - 1, d);
+    const diff = Math.round((wedding - today) / (1000 * 60 * 60 * 24));
     const numEl = document.getElementById('dday-num');
     const labelEl = document.getElementById('dday-label');
     if (!numEl) return;
