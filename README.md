@@ -22,22 +22,31 @@
 
 ## 3. GitHub Pages 배포
 
-저장소 이름이 **`HanbumKo.github.io`** 여야 `https://hanbumko.github.io` 주소가 됩니다.
-(다른 이름이면 `https://hanbumko.github.io/저장소이름`)
+기존 `HanbumKo.github.io` 저장소에는 예전 Jekyll 블로그가 올라가 있으므로,
+이 사이트는 **별도 저장소(project page)** 로 배포한다.
 
-    cd ~/Desktop/homepage
-    git init -b main
-    git add .
-    git commit -m "Initial homepage"
-    git remote add origin https://github.com/HanbumKo/HanbumKo.github.io.git
-    git push -u origin main
+1. GitHub 에서 **`homepage`** 이름의 public 저장소 생성
+   (README / .gitignore 추가 옵션은 모두 끌 것)
+2. 푸시:
 
-그 다음 GitHub 저장소 → Settings → Pages → Source `Deploy from a branch`,
-Branch `main` / `/ (root)` → Save. 1~2분 뒤 사이트가 뜹니다.
+        cd ~/Desktop/homepage
+        git remote add origin https://github.com/HanbumKo/homepage.git
+        git push -u origin main
+
+3. 저장소 → Settings → Pages → Source `Deploy from a branch`,
+   Branch `main` / `/ (root)` → Save
+
+주소: **https://hanbumko.github.io/homepage/**
 
 이후 수정은:
 
-    git add . && git commit -m "update" && git push
+    git add -A && git commit -m "update" && git push
+
+### 나중에 이 사이트를 메인 주소로 옮기려면
+
+`HanbumKo.github.io` 저장소의 내용을 이 사이트로 교체하면
+`https://hanbumko.github.io` 가 이 사이트가 된다. 예전 블로그를 남기고 싶으면
+먼저 백업 브랜치를 만들어 둘 것.
 
 ## 4. (선택) 개인 도메인
 
