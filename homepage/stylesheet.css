@@ -111,13 +111,13 @@ h2 {
 
 .one {
   width: 100%;
-  max-width: 240px;
+  max-width: 300px;
   position: relative;
 }
 
 .two {
   width: 100%;
-  max-width: 240px;
+  max-width: 300px;
   position: absolute;
   transition: opacity .2s ease-in-out;
   -moz-transition: opacity .2s ease-in-out;
